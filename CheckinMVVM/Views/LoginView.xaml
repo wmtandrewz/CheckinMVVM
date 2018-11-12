@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="CheckinMVVM.Views.LoginView"
+             BackgroundColor="#6D2276">
+    <ContentPage.Content >
+        <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+            <StackLayout Padding="25" VerticalOptions="Center" HorizontalOptions="Center">
+                <Image Source="Logos/cinnamo-white.png" VerticalOptions="Center" HorizontalOptions="Center" HeightRequest="150"/>
+            </StackLayout>
+            <StackLayout Padding="10" VerticalOptions="Center" HorizontalOptions="Center">
+                <Image Source="Logos/checkin-logos.png" VerticalOptions="Center" HorizontalOptions="Center" HeightRequest="200"/>
+                <Label Text="Cinnamon Check-in" TextColor="White" FontSize="Large" VerticalOptions="Center" HorizontalOptions="Center"/>
+            </StackLayout>
+            <StackLayout Padding="25" VerticalOptions="Center" HorizontalOptions="Center">
+                <Entry BackgroundColor="White" TextColor="Black" WidthRequest="250" HeightRequest="40" Placeholder="Username" Text="{Binding LoginModel.UserName,Mode=TwoWay}" HorizontalTextAlignment="Center"/>
+                <Entry BackgroundColor="White" TextColor="Black" WidthRequest="250" HeightRequest="40" Placeholder="Password" Text="{Binding LoginModel.Password,Mode=TwoWay}" HorizontalTextAlignment="Center" IsPassword="true"/>
+            </StackLayout>
+            <StackLayout Padding="25" VerticalOptions="Center" HorizontalOptions="Center">
+                <Button  Text="Login" BackgroundColor="#211261" TextColor="White" FontAttributes="Bold" FontSize="Large" BorderColor="White" HeightRequest="50" WidthRequest="250" HorizontalOptions="Center" Command="{Binding LoginButtonPressedCommand,Mode=TwoWay}" >
+                    <Button.BorderRadius>
+                        <OnPlatform x:TypeArguments="x:Int32" iOS="20" Android="50" />
+                    </Button.BorderRadius>
+                </Button>
+            </StackLayout>
+            <StackLayout Padding="10" VerticalOptions="EndAndExpand" HorizontalOptions="Center">
+                <Label Text="Designed and Developed by Cinnamon IT  |  All rights reserved  |  Ver. 1.67  |  Copyrights © 2018" TextColor="Silver" FontSize="Small" VerticalOptions="Center" HorizontalOptions="Center"/>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

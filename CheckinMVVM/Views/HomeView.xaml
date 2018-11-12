@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CheckinMVVM.Views.HomeView">
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="FillAndExpand">
+            <StackLayout BackgroundColor="#211261" Padding="10,10,10,10" Orientation="Horizontal" VerticalOptions="Start">
+                <Image Source="Logos/cinnamo-white.png" HorizontalOptions="Start" VerticalOptions="Center" HeightRequest="40"/>
+                <BoxView Color="Gray" HorizontalOptions="Start" VerticalOptions="Center" HeightRequest="70" WidthRequest="2"/>
+                <Label Text="Welcome!" FontAttributes="Bold" FontSize="32" TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+        </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
