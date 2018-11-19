@@ -134,6 +134,19 @@
     <BundleResource Include="Resources\Icons\Pending.png" />
     <BundleResource Include="Resources\Icons\NavigationRight.png" />
     <BundleResource Include="Resources\Icons\NoRoom.png" />
+    <BundleResource Include="Resources\Icons\drawer_icon.png" />
+    <BundleResource Include="Resources\Icons\ReservationIcons\arrival.png" />
+    <BundleResource Include="Resources\Icons\ReservationIcons\mealPlan.png" />
+    <BundleResource Include="Resources\Icons\ReservationIcons\nights.png" />
+    <BundleResource Include="Resources\Icons\ReservationIcons\pax.png" />
+    <BundleResource Include="Resources\Icons\ReservationIcons\roomStatus.png" />
+    <BundleResource Include="Resources\Icons\ReservationIcons\roomType.png" />
+    <BundleResource Include="Resources\Icons\ReservationIcons\departure.png" />
+    <BundleResource Include="Resources\Icons\ReservationIcons\roomNumber.png" />
+    <BundleResource Include="Resources\Icons\ReservationIcons\remarks.png" />
+    <BundleResource Include="Resources\Icons\ReservationIcons\checkin.png" />
+    <BundleResource Include="Resources\Icons\warning.png" />
+    <BundleResource Include="Resources\Icons\tick.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -144,12 +157,15 @@
     <Reference Include="System.Net.Http" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Xamarin.Forms" Version="3.3.0.967583" />
+    <PackageReference Include="Xamarin.Forms" Version="3.4.0.1008975" />
     <PackageReference Include="Newtonsoft.Json">
       <Version>11.0.2</Version>
     </PackageReference>
     <PackageReference Include="Xam.Plugins.Settings">
       <Version>3.1.1</Version>
+    </PackageReference>
+    <PackageReference Include="Forms.Controls.FlexButton">
+      <Version>0.9.0</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>

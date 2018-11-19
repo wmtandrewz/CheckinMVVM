@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CheckinMVVM.Views.RoomListView">
+    <ContentPage.Content>
+        <StackLayout Padding="15,15,15,15" BackgroundColor="Transparent">
+            <ActivityIndicator IsVisible="{Binding IsIndicatorVisible}" IsRunning="{Binding IsIndicatorVisible}" Color="#660099" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" />
+            <StackLayout Padding="20,20,20,20" x:Name="RoomDetails">
+                <ListView ItemsSource="{Binding RoomingList}" IsVisible="{Binding IsListVisible}" RowHeight="80" SeparatorColor="#660099" SeparatorVisibility="Default" CachingStrategy="RetainElement">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid BackgroundColor="Transparent" Padding="0,5,0,0">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="5*" />
+                                        <RowDefinition Height="3*" />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="5*" />
+                                        <ColumnDefinition Width="10*" />
+                                        <ColumnDefinition Width="20*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Image Grid.Row="0" Grid.Column="0" Source="{Binding RoomStatusImage}" IsVisible="true" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" />
+                                    <Label Grid.Row="0" Grid.Column="1" FontFamily="Verdana" Text="{Binding RoomNumber}" Font="Bold" FontSize="Small" TextColor="Black" />
+                                    <Label Grid.Row="1" Grid.Column="1" FontFamily="Verdana" Text="{Binding RoomType}" Font="Italic" FontSize="Small" TextColor="Black" VerticalOptions="Start" />
+                                    <Label Grid.Row="1" Grid.Column="2" FontFamily="Verdana" Text="{Binding RoomPreferences}" Font="Bold" FontSize="Small" TextColor="{Binding RoomStatusColor}" VerticalOptions="Start" />
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

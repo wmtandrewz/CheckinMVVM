@@ -20,6 +20,8 @@ namespace CheckinMVVM.ViewModels
 
         public ICommand LoadReservationsListCommand { get; }
         public ICommand ReservationsListOnLoadCommand { get; }
+        public ICommand ReservationListItemSelectedCommand { get; }
+
 
         private ObservableCollection<ReservationsHeaderModel> _reservationsList;
         public ObservableCollection<ReservationsHeaderModel> ReservationsList
@@ -32,6 +34,20 @@ namespace CheckinMVVM.ViewModels
             {
                 _reservationsList = value;
                 OnPropertyChanged("ReservationsList");
+            }
+        }
+
+        private ReservationsHeaderModel _selectedReservation;
+        public ReservationsHeaderModel SelectedReservation
+        {
+            get
+            {
+                return _selectedReservation;
+            }
+            set
+            {
+                _selectedReservation = value;
+                OnPropertyChanged("SelectedReservation");
             }
         }
 
@@ -89,6 +105,27 @@ namespace CheckinMVVM.ViewModels
         {
             ReservationsListOnLoadCommand = new Command(async () => await PageOnLOad());
             LoadReservationsListCommand = new Command(async() => await LoadReservationsList());
+            ReservationListItemSelectedCommand = new Command(ReservationListItemSelected);
+        }
+
+        private void ReservationListItemSelected()
+        {
+            if(SelectedReservation !=null )
+            {
+                //var responce = await GetAPIservice.GetReservationDetails(Settings.HotelCode, SelectedReservation.ReservationID);
+
+                //if(!string.IsNullOrEmpty(responce))
+                //{
+                //    ReservationDetailsModel reservationDetails = JsonConvert.DeserializeObject<ReservationDetailsModel>(responce);
+                //    if(reservationDetails != null)
+                //    {
+                //        MessagingCenter.Send(this, "SetDetailPage", reservationDetails);
+                //    }
+                //}
+
+                MessagingCenter.Send(this, "SelectedReservation", SelectedReservation);
+
+            }
         }
 
         private async Task PageOnLOad()

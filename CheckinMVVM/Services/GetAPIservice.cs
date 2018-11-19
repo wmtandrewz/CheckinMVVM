@@ -4,6 +4,7 @@ using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using CheckinMVVM.Globals;
 using CheckinMVVM.Helpers;
+using Newtonsoft.Json.Linq;
 
 namespace CheckinMVVM.Services
 {
@@ -92,6 +93,102 @@ namespace CheckinMVVM.Services
                         {
                             string reservationsResult = await responceContent.ReadAsStringAsync();
                             return reservationsResult;
+                        }
+                    }
+                    else
+                    {
+                        return await apiResult.Content.ReadAsStringAsync();
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                return e.Message;
+            }
+        }
+
+        public static async Task<string> GetReservationDetails(string hotelCode, string reservationId)
+        {
+            try
+            {
+                using (HttpClient apiClient = new HttpClient())
+                {
+                    apiClient.BaseAddress = new Uri(Settings.BaseUri);
+                    apiClient.DefaultRequestHeaders.Add("AuthToken", Constants.AccessToken);
+                    apiClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                    var apiResult = await apiClient.GetAsync($"retrive/GetReservationDetails?hotelCode={hotelCode}&reservationId={reservationId}");
+
+                    if (apiResult.IsSuccessStatusCode)
+                    {
+                        using (HttpContent responceContent = apiResult.Content)
+                        {
+                            string reservationsResult = await responceContent.ReadAsStringAsync();
+                            return reservationsResult;
+                        }
+                    }
+                    else
+                    {
+                        return await apiResult.Content.ReadAsStringAsync();
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                return e.Message;
+            }
+        }
+
+        public static async Task<string> GetRoomStatus(string hotelCode, string roomNumber)
+        {
+            try
+            {
+                using (HttpClient apiClient = new HttpClient())
+                {
+                    apiClient.BaseAddress = new Uri(Settings.BaseUri);
+                    apiClient.DefaultRequestHeaders.Add("AuthToken", Constants.AccessToken);
+                    apiClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                    var apiResult = await apiClient.GetAsync($"retrive/GetRoomsStatus?hotelCode={hotelCode}&roomNumber={roomNumber}");
+
+                    if (apiResult.IsSuccessStatusCode)
+                    {
+                        using (HttpContent responceContent = apiResult.Content)
+                        {
+                            string roomStatusResult = await responceContent.ReadAsStringAsync();
+                            return roomStatusResult;
+                        }
+                    }
+                    else
+                    {
+                        return await apiResult.Content.ReadAsStringAsync();
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                return e.Message;
+            }
+        }
+
+        public static async Task<string> GetRoomDetails(string hotelCode,string reservationId, string roomStatusType)
+        {
+            try
+            {
+                using (HttpClient apiClient = new HttpClient())
+                {
+                    apiClient.BaseAddress = new Uri(Settings.BaseUri);
+                    apiClient.DefaultRequestHeaders.Add("AuthToken", Constants.AccessToken);
+                    apiClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                    var apiResult = await apiClient.GetAsync($"retrive/GetRoomsDetails?hotelCode={hotelCode}&reservationId={reservationId}&roomStatus={roomStatusType}");
+
+                    if (apiResult.IsSuccessStatusCode)
+                    {
+                        using (HttpContent responceContent = apiResult.Content)
+                        {
+                            string roomList = await responceContent.ReadAsStringAsync();
+                            return roomList;
                         }
                     }
                     else

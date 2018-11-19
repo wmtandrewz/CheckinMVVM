@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CheckinMVVM.Views.ReservationsListView" BackgroundColor="#6D2276">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CheckinMVVM.Views.ReservationsListView" xmlns:customBehaviors="using:CheckinMVVM.Behaviors;assembly=EventToCommandBehavior" BackgroundColor="#6D2276">
     <ContentPage.Content>
         <StackLayout Padding="0,0,0,0" BackgroundColor="Transparent">
             <StackLayout Padding="5,21,5,5">
@@ -45,7 +45,7 @@
                     
                 </Image.GestureRecognizers>
             </Image>
-            <ListView ItemsSource="{Binding ReservationsList,Mode=TwoWay}" IsVisible="{Binding IsListVisible}" RowHeight="130" SeparatorColor="#660099" SeparatorVisibility="Default" IsPullToRefreshEnabled="true" CachingStrategy="RetainElement">
+            <ListView ItemsSource="{Binding ReservationsList,Mode=TwoWay}" IsVisible="{Binding IsListVisible}" RowHeight="130" SeparatorColor="#660099" SeparatorVisibility="Default" IsPullToRefreshEnabled="true" SelectedItem="{Binding SelectedReservation,Mode=TwoWay}" CachingStrategy="RetainElement">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
@@ -110,6 +110,9 @@
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
+                <ListView.Behaviors>
+                    <customBehaviors:EventToCommandBehavior EventName="ItemSelected" Command="{Binding ReservationListItemSelectedCommand}" />
+                </ListView.Behaviors>
             </ListView>
         </StackLayout>
     </ContentPage.Content>

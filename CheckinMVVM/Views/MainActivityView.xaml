@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CheckinMVVM.Views.MainActivityView" xmlns:flex="clr-namespace:Flex.Controls;assembly=Flex">
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="FillAndExpand" BackgroundColor="#f7faff">
+            <StackLayout BackgroundColor="#211261" Padding="10,10,10,10" Orientation="Vertical" VerticalOptions="Start">
+                <Label Text="{Binding ReservationsHeader.ReservationID}" FontAttributes="Bold" FontSize="32" TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" />
+                <Label Text="{Binding ReservationsHeader.MainClientName}" FontSize="20" TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" />
+            </StackLayout>
+            <ActivityIndicator IsRunning="{Binding IsRunningIndicator}" IsVisible="{Binding IsVisibleIndicator}" Color="#211261" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" />
+            <StackLayout IsVisible="{Binding IsVisibleData}" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" BackgroundColor="#f7faff">
+                
+                <StackLayout BackgroundColor="White" Margin="10" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" MinimumHeightRequest="250">
+                    <Grid Margin="150,10,150,10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="60" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Image Grid.Row="0" Grid.Column="0" Source="Icons/ReservationIcons/arrival.png" HeightRequest="40" VerticalOptions="Center" HorizontalOptions="Center" />
+                        <Label Grid.Row="0" Grid.Column="1" Text="Arrival Date" FontAttributes="Bold" TextColor="#211261" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" />
+                        <Label Grid.Row="0" Grid.Column="2" Text="{Binding ReservationDetails.ArrivalDate}" VerticalTextAlignment="Center" />
+                        <Image Grid.Row="1" Grid.Column="0" Source="Icons/ReservationIcons/nights.png" HeightRequest="40" VerticalOptions="Center" HorizontalOptions="Center" />
+                        <Label Grid.Row="1" Grid.Column="1" Text="Number of Nights" FontAttributes="Bold" TextColor="#211261" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" />
+                        <Label Grid.Row="1" Grid.Column="2" Text="{Binding ReservationDetails.NumberOfNights}" VerticalTextAlignment="Center" />
+                        <Image Grid.Row="2" Grid.Column="0" Source="Icons/ReservationIcons/departure.png" HeightRequest="40" VerticalOptions="Center" HorizontalOptions="Center" />
+                        <Label Grid.Row="2" Grid.Column="1" Text="Departure Date" FontAttributes="Bold" TextColor="#211261" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" />
+                        <Label Grid.Row="2" Grid.Column="2" Text="{Binding ReservationDetails.DepartureDate}" VerticalTextAlignment="Center" />
+                        <Image Grid.Row="3" Grid.Column="0" Source="Icons/ReservationIcons/pax.png" HeightRequest="40" VerticalOptions="Center" HorizontalOptions="Center" />
+                        <Label Grid.Row="3" Grid.Column="1" Text="Number of Pax" FontAttributes="Bold" TextColor="#211261" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" />
+                        <Label Grid.Row="3" Grid.Column="2" Text="{Binding ReservationDetails.NumberOfPax}" VerticalTextAlignment="Center" />
+                        <Image Grid.Row="4" Grid.Column="0" Source="Icons/ReservationIcons/roomType.png" HeightRequest="40" VerticalOptions="Center" HorizontalOptions="Center" />
+                        <Label Grid.Row="4" Grid.Column="1" Text="Room Type" FontAttributes="Bold" TextColor="#211261" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" />
+                        <Label Grid.Row="4" Grid.Column="2" Text="{Binding ReservationDetails.RoomType}" VerticalTextAlignment="Center" />
+                        <Image Grid.Row="5" Grid.Column="0" Source="Icons/ReservationIcons/roomNumber.png" HeightRequest="40" VerticalOptions="Center" HorizontalOptions="Center" />
+                        <Label Grid.Row="5" Grid.Column="1" Text="Room Number" FontAttributes="Bold" TextColor="#211261" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" />
+                        <Label Grid.Row="5" Grid.Column="2" Text="{Binding ReservationDetails.RoomNumber}" TextColor="{Binding ReservationDetails.RoomStatusColor}" VerticalTextAlignment="Center" />
+                        <Image Grid.Row="6" Grid.Column="0" Source="Icons/ReservationIcons/roomStatus.png" HeightRequest="40" VerticalOptions="Center" HorizontalOptions="Center" />
+                        <Label Grid.Row="6" Grid.Column="1" Text="Room Status" FontAttributes="Bold" TextColor="#211261" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" />
+                        <Label Grid.Row="6" Grid.Column="2" Text="{Binding ReservationDetails.RoomStatus}" TextColor="{Binding ReservationDetails.RoomStatusColor}" VerticalTextAlignment="Center" />
+                        <Image Grid.Row="7" Grid.Column="0" Source="Icons/ReservationIcons/mealPlan.png" HeightRequest="40" VerticalOptions="Center" HorizontalOptions="Center" />
+                        <Label Grid.Row="7" Grid.Column="1" Text="Meal Plan" FontAttributes="Bold" TextColor="#211261" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" />
+                        <Label Grid.Row="7" Grid.Column="2" Text="{Binding ReservationDetails.MealPlan}" VerticalTextAlignment="Center" />
+                    </Grid>
+                </StackLayout>
+            </StackLayout>
+            <StackLayout IsVisible="{Binding IsVisibleData}" BackgroundColor="Transparent" Margin="10" VerticalOptions="EndAndExpand" HorizontalOptions="FillAndExpand" Orientation="Horizontal" HeightRequest="170" MinimumHeightRequest="150">
+                <Grid Margin="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="120" />
+                        <RowDefinition Height="30" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <flex:FlexButton Grid.Row="0" Grid.Column="0" ClickedCommand="{Binding LoadRoomListCommand}" WidthRequest="100" HeightRequest="100" CornerRadius="50" BorderColor="White" BorderThickness="2" HasShadow="true" HorizontalOptions="Center" VerticalOptions="Start"
+                        Icon="Icons/ReservationIcons/roomNumber.png" Margin="10" ForegroundColor="#ffffff" HighlightForegroundColor="#49516F" BackgroundColor="#3c5ec4" HighlightBackgroundColor="#8EA4D2" />
+                    <Label Grid.Row="1" Grid.Column="0" Text="Assign Room" TextColor="Gray" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+                    <Image Grid.Row="0" Grid.Column="0" Source="{Binding BadgeRoomIcon}" Margin="0,0,30,10" WidthRequest="40" HeightRequest="40" HorizontalOptions="EndAndExpand" VerticalOptions="EndAndExpand"/>
+                    
+                    <flex:FlexButton Grid.Row="0" Grid.Column="1" WidthRequest="100" HeightRequest="100" CornerRadius="50" BorderColor="White" BorderThickness="2" HasShadow="true" HorizontalOptions="Center" VerticalOptions="End"
+                        Icon="Icons/ReservationIcons/pax.png" Margin="10" ForegroundColor="#ffffff" HighlightForegroundColor="#49516F" BackgroundColor="#3c5ec4" HighlightBackgroundColor="#8EA4D2" />
+                    <Label Grid.Row="1" Grid.Column="1" Text="Guest Profiles" TextColor="Gray" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+                    <Image Grid.Row="0" Grid.Column="1" Source="{Binding BadgeGuestIcon}" Margin="0,0,30,10" WidthRequest="40" HeightRequest="40" HorizontalOptions="EndAndExpand" VerticalOptions="EndAndExpand"/>
+                    
+                    <flex:FlexButton Grid.Row="0" Grid.Column="2" WidthRequest="100" HeightRequest="100" CornerRadius="50" BorderColor="White" BorderThickness="2" HasShadow="true" HorizontalOptions="Center" VerticalOptions="End"
+                        Icon="Icons/ReservationIcons/remarks.png" Margin="10" ForegroundColor="#ffffff" HighlightForegroundColor="#49516F" BackgroundColor="#3c5ec4" HighlightBackgroundColor="#8EA4D2" />
+                    <Label Grid.Row="1" Grid.Column="2" Text="Remarks" TextColor="Gray" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+                    <Image Grid.Row="0" Grid.Column="2" Source="{Binding BadgeRemarksIcon}" Margin="0,0,30,10" WidthRequest="40" HeightRequest="40" HorizontalOptions="EndAndExpand" VerticalOptions="EndAndExpand"/>
+                    
+                    <flex:FlexButton Grid.Row="0" Grid.Column="3" WidthRequest="100" HeightRequest="100" CornerRadius="50" BorderColor="White" BorderThickness="2" HasShadow="true" HorizontalOptions="Center" VerticalOptions="End"
+                        Icon="Icons/ReservationIcons/checkin.png" Margin="10" ForegroundColor="#ffffff" HighlightForegroundColor="#49516F" BackgroundColor="#3c5ec4" HighlightBackgroundColor="#8EA4D2" />
+                    <Label Grid.Row="1" Grid.Column="3" Text="Check-in" TextColor="Gray" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+                    <Image Grid.Row="0" Grid.Column="3" Source="{Binding BadgeCheckinIcon}" Margin="0,0,30,10" WidthRequest="40" HeightRequest="40" HorizontalOptions="EndAndExpand" VerticalOptions="EndAndExpand"/>
+                </Grid>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

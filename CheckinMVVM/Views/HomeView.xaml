@@ -6,7 +6,7 @@
                 <Image Source="Logos/cinnamo-white.png" HorizontalOptions="Start" VerticalOptions="Center" HeightRequest="40"/>
                 <BoxView Color="Gray" HorizontalOptions="Start" VerticalOptions="Center" HeightRequest="70" WidthRequest="2"/>
                 <Label Text="Welcome!" FontAttributes="Bold" FontSize="32" TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
-        </StackLayout>
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
