@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CheckinMVVM.Views.GuestView" xmlns:customBehaviors="using:CheckinMVVM.Behaviors;assembly=EventToCommandBehavior">
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+            <StackLayout BackgroundColor="#211261" Padding="10,10,10,10" Orientation="Vertical" VerticalOptions="Start">
+                <Label Text="{Binding ReservationsHeader.ReservationID}" FontAttributes="Bold" FontSize="32" TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" />
+                <Label Text="Guest Profiles" FontSize="20" TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" />
+            </StackLayout>
+            <!--                <ScrollView VerticalOptions="Center" HorizontalOptions="Center">-->
+            <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                <ListView ItemsSource="{Binding GuestProfiles}" RowHeight="200" SelectedItem="{Binding SelectedGuestProfile,Mode=TwoWay}" SeparatorVisibility="Default" SeparatorColor="#660099" CachingStrategy="RetainElement">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Padding="10">
+                                    <Grid BackgroundColor="White" Padding="10,10,10,10">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="4*" />
+                                            <ColumnDefinition Width="3*" />
+                                            <ColumnDefinition Width="1*" />
+                                            <ColumnDefinition Width="4*" />
+                                        </Grid.ColumnDefinitions>
+                                        <Image Grid.Row="0" Grid.Column="0" Grid.RowSpan="6" Source="{Binding GuestImage}" />
+                                        <Label Grid.Row="0" Grid.Column="1" Text="ID Number" FontAttributes="Bold" />
+                                        <Label Grid.Row="1" Grid.Column="1" Text="Guest Code" FontAttributes="Bold" />
+                                        <Label Grid.Row="2" Grid.Column="1" Text="Guest Name" FontAttributes="Bold" />
+                                        <Label Grid.Row="3" Grid.Column="1" Text="Country" FontAttributes="Bold" />
+                                        <Label Grid.Row="4" Grid.Column="1" Text="Email" FontAttributes="Bold" />
+                                        <Label Grid.Row="5" Grid.Column="1" Text="Contact No" FontAttributes="Bold" />
+                                        <Label Grid.Row="0" Grid.Column="2" Text=":" FontAttributes="Bold" />
+                                        <Label Grid.Row="1" Grid.Column="2" Text=":" FontAttributes="Bold" />
+                                        <Label Grid.Row="2" Grid.Column="2" Text=":" FontAttributes="Bold" />
+                                        <Label Grid.Row="3" Grid.Column="2" Text=":" FontAttributes="Bold" />
+                                        <Label Grid.Row="4" Grid.Column="2" Text=":" FontAttributes="Bold" />
+                                        <Label Grid.Row="5" Grid.Column="2" Text=":" FontAttributes="Bold" />
+                                        <Label Grid.Row="0" Grid.Column="3" Text="{Binding PassportIdNumber}" />
+                                        <Label Grid.Row="1" Grid.Column="3" Text="{Binding GuestCode}" />
+                                        <Label Grid.Row="2" Grid.Column="3" Text="{Binding GuestName}" />
+                                        <Label Grid.Row="3" Grid.Column="3" Text="{Binding Country}" />
+                                        <Label Grid.Row="4" Grid.Column="3" Text="{Binding Email}" />
+                                        <Label Grid.Row="5" Grid.Column="3" Text="{Binding ContactNumber}" />
+                                    </Grid>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                    <ListView.Behaviors>
+                        <customBehaviors:EventToCommandBehavior EventName="ItemSelected" Command="{Binding GuestProfileSelectedCommand}" />
+                    </ListView.Behaviors>
+                </ListView>
+            </StackLayout>
+            <!--                </ScrollView>-->
+            <!--<Label Text="BlinkID Results:" />
+            <Editor 
+                IsEnabled="true" 
+                Text="{Binding ScanResult.PrimaryId}"
+                HeightRequest="150" 
+                TextColor="Black" 
+                BackgroundColor="White" 
+                FontSize="Medium" />
+            
+            <Button x:Name="startScanningButton" Text="Start scanning" Command="{Binding StartScanCommand}"/>
+            <Image Source="{Binding FullDocumentImge}"
+                WidthRequest="200"
+                HeightRequest="100"  />
+            <Image Source="{Binding FaceImage}" 
+                WidthRequest="200"
+                HeightRequest="100"  />
+            <Image Source="{Binding FrameImageSource}"
+                WidthRequest="200"
+                HeightRequest="100"  />-->
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

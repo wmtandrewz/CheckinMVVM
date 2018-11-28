@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Newtonsoft.Json;
 
 namespace CheckinMVVM.Models
@@ -46,5 +47,11 @@ namespace CheckinMVVM.Models
 
         [JsonProperty("DepartureFlight")]
         public string DepartureFlight { get; set; }
+
+        [JsonProperty("MainRemark")]
+        public string MainRemark { get; set; }
+
+        [JsonProperty("GuestProfilesList")]
+        public List<GuestDetailsModel> GuestProfilesList { get; set; }
     }
 }

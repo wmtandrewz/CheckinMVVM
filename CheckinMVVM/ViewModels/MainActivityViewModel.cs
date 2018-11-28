@@ -19,6 +19,7 @@ namespace CheckinMVVM.ViewModels
         public INavigation NavigationStack { get; private set; }
         public ICommand PageOnLoadCommand { get; }
         public ICommand LoadRoomListCommand { get; }
+        public ICommand GuestViewCommand { get; }
 
         private ReservationsHeaderModel _reservationsHeaderModel;
         public ReservationsHeaderModel ReservationsHeader
@@ -31,7 +32,7 @@ namespace CheckinMVVM.ViewModels
             set
             {
                 _reservationsHeaderModel = value;
-                OnPropertyChanged("ReservationDetailsModel");
+                OnPropertyChanged("ReservationsHeader");
 
                 if(_reservationsHeaderModel != null && _reservationsHeaderModel.RoomNumber.Contains("N/A") || string.IsNullOrEmpty(_reservationsHeaderModel.RoomNumber))
                 {
@@ -72,6 +73,7 @@ namespace CheckinMVVM.ViewModels
             set
             {
                 _reservationDetailsModel = value;
+                Constants.SelectedReservationDetailSet = value;
                 OnPropertyChanged("ReservationDetails");
             }
         }
@@ -157,6 +159,12 @@ namespace CheckinMVVM.ViewModels
 
             PageOnLoadCommand = new Command(async () => await PageOnLoad());
             LoadRoomListCommand = new Command(async () => await LoadRoomListPage());
+            GuestViewCommand = new Command(async () => await LoadGuestView());
+        }
+
+        private async Task LoadGuestView()
+        {
+            await this.NavigationStack.PushAsync(new GuestView());
         }
 
         private async Task LoadRoomListPage()

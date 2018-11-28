@@ -17,11 +17,12 @@
                 <Entry BackgroundColor="White" TextColor="Black" WidthRequest="250" HeightRequest="40" Placeholder="Password" Text="{Binding LoginModel.Password,Mode=TwoWay}" HorizontalTextAlignment="Center" IsPassword="true"/>
             </StackLayout>
             <StackLayout Padding="25" VerticalOptions="Center" HorizontalOptions="Center">
-                <Button  Text="Login" BackgroundColor="#211261" TextColor="White" FontAttributes="Bold" FontSize="Large" BorderColor="White" HeightRequest="50" WidthRequest="250" HorizontalOptions="Center" Command="{Binding LoginButtonPressedCommand,Mode=TwoWay}" >
+                <Button  Text="Login" IsVisible="{Binding IsVisibleButton}" BackgroundColor="#211261" TextColor="White" FontAttributes="Bold" FontSize="Large" BorderColor="White" HeightRequest="50" WidthRequest="250" HorizontalOptions="Center" Command="{Binding LoginButtonPressedCommand,Mode=TwoWay}" >
                     <Button.BorderRadius>
                         <OnPlatform x:TypeArguments="x:Int32" iOS="20" Android="50" />
                     </Button.BorderRadius>
                 </Button>
+                <ActivityIndicator IsRunning="{Binding IsRunningIndicator}" IsVisible="{Binding IsVisibleIndicator}" VerticalOptions="Center" HorizontalOptions="Center" Color="Navy" HeightRequest="50"/>
             </StackLayout>
             <StackLayout Padding="10" VerticalOptions="EndAndExpand" HorizontalOptions="Center">
                 <Label Text="Designed and Developed by Cinnamon IT  |  All rights reserved  |  Ver. 1.67  |  Copyrights © 2018" TextColor="Silver" FontSize="Small" VerticalOptions="Center" HorizontalOptions="Center"/>

@@ -30,6 +30,48 @@ namespace CheckinMVVM.ViewModels
             }
         }
 
+        private bool _isRunningIndicator = false;
+        public bool IsRunningIndicator
+        {
+            get
+            {
+                return _isRunningIndicator;
+            }
+            set
+            {
+                _isRunningIndicator = value;
+                OnPropertyChanged("IsRunningIndicator");
+            }
+        }
+
+        private bool _isVisibleIndicator = false;
+        public bool IsVisibleIndicator
+        {
+            get
+            {
+                return _isVisibleIndicator;
+            }
+            set
+            {
+                _isVisibleIndicator = value;
+                OnPropertyChanged("IsVisibleIndicator");
+            }
+        }
+
+        private bool _isVisibleButton = true;
+        public bool IsVisibleButton
+        {
+            get
+            {
+                return _isVisibleButton;
+            }
+            set
+            {
+                _isVisibleButton = value;
+                OnPropertyChanged("IsVisibleButton");
+            }
+        }
+
         public LoginViewModel()
         {
             LoginButtonPressedCommand = new Command(async() => await LoginUser());
@@ -37,7 +79,10 @@ namespace CheckinMVVM.ViewModels
 
         private async Task LoginUser()
         {
-        
+            IsVisibleButton = false;
+            IsVisibleIndicator = true;
+            IsRunningIndicator = true;
+
             try
             {            
                 //Authenticate against ADFS and NW Gateway
@@ -56,9 +101,17 @@ namespace CheckinMVVM.ViewModels
                     await Application.Current.MainPage.DisplayAlert("Authorization Failed!",$"{access_token}","OK");
                     LoginModel = new UserModel();
                 }
+
+                IsVisibleButton = true;
+                IsVisibleIndicator = false;
+                IsRunningIndicator = false;
             }
             catch(Exception)
             {
+                IsVisibleButton = true;
+                IsVisibleIndicator = false;
+                IsRunningIndicator = false;
+
                 LoginModel = new UserModel();
             }
         }

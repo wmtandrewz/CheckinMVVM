@@ -38,6 +38,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\GuestView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\GuestProfileView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
@@ -83,6 +91,18 @@
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Models\RoomListModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\RoomListViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\GuestView.xaml.cs">
+      <DependentUpon>GuestView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Models\GuestDetailsModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\GuestProfileView.xaml.cs">
+      <DependentUpon>GuestProfileView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\GuestProfileViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\IDMethodModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\GenderModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\SalutationModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\GuestViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Models\" />

@@ -70,7 +70,7 @@
                     <Label Grid.Row="1" Grid.Column="0" Text="Assign Room" TextColor="Gray" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
                     <Image Grid.Row="0" Grid.Column="0" Source="{Binding BadgeRoomIcon}" Margin="0,0,30,10" WidthRequest="40" HeightRequest="40" HorizontalOptions="EndAndExpand" VerticalOptions="EndAndExpand"/>
                     
-                    <flex:FlexButton Grid.Row="0" Grid.Column="1" WidthRequest="100" HeightRequest="100" CornerRadius="50" BorderColor="White" BorderThickness="2" HasShadow="true" HorizontalOptions="Center" VerticalOptions="End"
+                    <flex:FlexButton Grid.Row="0" Grid.Column="1" ClickedCommand="{Binding GuestViewCommand}" WidthRequest="100" HeightRequest="100" CornerRadius="50" BorderColor="White" BorderThickness="2" HasShadow="true" HorizontalOptions="Center" VerticalOptions="End"
                         Icon="Icons/ReservationIcons/pax.png" Margin="10" ForegroundColor="#ffffff" HighlightForegroundColor="#49516F" BackgroundColor="#3c5ec4" HighlightBackgroundColor="#8EA4D2" />
                     <Label Grid.Row="1" Grid.Column="1" Text="Guest Profiles" TextColor="Gray" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
                     <Image Grid.Row="0" Grid.Column="1" Source="{Binding BadgeGuestIcon}" Margin="0,0,30,10" WidthRequest="40" HeightRequest="40" HorizontalOptions="EndAndExpand" VerticalOptions="EndAndExpand"/>

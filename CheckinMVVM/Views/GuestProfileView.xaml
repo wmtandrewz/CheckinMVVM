@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CheckinMVVM.Views.GuestProfileView">
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout BackgroundColor="#211261" Padding="10,10,10,10" Orientation="Vertical" VerticalOptions="Start">
+                <Label Text="Guest Profile" FontAttributes="Bold" FontSize="32" TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" />
+                <Label Text="{Binding GuestNumberText}" FontSize="20" TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" />
+            </StackLayout>
+            <ScrollView>
+                <ActivityIndicator IsVisible="{Binding IsVisibleIndicator}" IsRunning="{Binding IsRunningIndicator}" Color="#660099" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" />
+                <StackLayout IsVisible="{Binding IsVisiblePage}">
+                    <StackLayout Padding="10,0,10,10">
+                        <Label FontAttributes="Bold" FontSize="Medium" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Text="Identification Method :" />
+                        <Picker Title="Select" ItemsSource="{Binding IDPickerItemlList}" ItemDisplayBinding="{Binding Method}" SelectedItem="{Binding SelectedIDMethod,Mode=TwoWay}" BackgroundColor="#E6E6FA" VerticalOptions="Center" TextColor="Black" />
+                        <Label FontAttributes="Bold" FontSize="Medium" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Text="Identification Number :" />
+                        <SearchBar Placeholder="Search Identification ID" FontSize="Medium" HorizontalTextAlignment="Start">
+                            <SearchBar.PlaceholderColor>
+                                <OnPlatform x:TypeArguments="Color" Android="Black" iOS="#373737">
+                                </OnPlatform>
+                            </SearchBar.PlaceholderColor>
+                            <SearchBar.TextColor>
+                                <OnPlatform x:TypeArguments="Color" Android="Black" iOS="#212121">
+                                </OnPlatform>
+                            </SearchBar.TextColor>
+                            <SearchBar.BackgroundColor>
+                                <OnPlatform x:TypeArguments="Color" Android="#E6E6FA">
+                                </OnPlatform>
+                            </SearchBar.BackgroundColor>
+                        </SearchBar>
+                        <StackLayout BackgroundColor="Transparent">
+                            <Button Text="Scan Passport" Command="{Binding ScanPassportCommand}" BackgroundColor="#008FBE" TextColor="White">
+                                <Button.BorderRadius>
+                                    <OnPlatform x:TypeArguments="x:Int32" iOS="20" Android="50" />
+                                </Button.BorderRadius>
+                            </Button>
+                        </StackLayout>
+                        <StackLayout Padding="20,30,20,0" IsVisible="{Binding IsVisibleHint}">
+                            <Image Source="Icons/passport.png" MinimumHeightRequest="40" MinimumWidthRequest="40" HeightRequest="40" WidthRequest="40" />
+                            <Label Text="Search Guest Through Identification Number or Scan Passport to extract details." XAlign="Center" TextColor="Black" />
+                        </StackLayout>
+                        <StackLayout IsVisible="{Binding IsVisibleGuestInformation}">
+                            <StackLayout BackgroundColor="#211261">
+                                <Label FontAttributes="Bold" TextColor="White" FontSize="Medium" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Text="Passport Information" />
+                            </StackLayout>
+                            <Label Text="First Name :" FontAttributes="Bold" FontSize="Medium" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" />
+                            <Entry BackgroundColor="#E6E6FA" x:Name="GuestFisrtName" Placeholder="Enter First Name" TextColor="Black" HorizontalTextAlignment="Start" PlaceholderColor="#BBB8BF" FontSize="Medium" />
+                            <Label Text="Last Name :" FontAttributes="Bold" FontSize="Medium" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" />
+                            <Entry BackgroundColor="#E6E6FA" x:Name="GuestLastName" Placeholder="Enter Last Name" TextColor="Black" HorizontalTextAlignment="Start" PlaceholderColor="#BBB8BF" FontSize="Medium" />
+                            <Label Text="Gender :" FontAttributes="Bold" FontSize="Medium" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" />
+                            <Picker ItemsSource="{Binding GenderList}" ItemDisplayBinding="{Binding Gender}" SelectedItem="{Binding SelectedGender,Mode=TwoWay}" Title="Select" BackgroundColor="#E6E6FA" TextColor="Black">
+                            </Picker>
+                            <Label Text="Country :" FontAttributes="Bold" FontSize="Medium" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" />
+                            <Picker x:Name="GuestCountry" Title="Select" BackgroundColor="#E6E6FA" TextColor="Black">
+                            </Picker>
+                            <Label Text="Nationality :" FontAttributes="Bold" FontSize="Medium" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" />
+                            <Picker x:Name="Nationality" Title="Select" BackgroundColor="#E6E6FA" TextColor="Black">
+                            </Picker>
+                            <Label Text="Date Of Birth :" FontAttributes="Bold" FontSize="Medium" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" />
+                            <DatePicker VerticalOptions="CenterAndExpand" Date="{x:Static sys:DateTime.Now}" BackgroundColor="#E6E6FA" TextColor="Black">
+                                <DatePicker.Format>yyyy-MM-dd</DatePicker.Format>
+                            </DatePicker>
+                            <StackLayout BackgroundColor="#211261">
+                                <Label FontAttributes="Bold" TextColor="White" FontSize="Medium" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Text="Other Information" />
+                            </StackLayout>
+                            <Label FontAttributes="Bold" FontSize="Medium" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Text="Salutation :" />
+                            <Picker ItemsSource="{Binding SalutationList}" ItemDisplayBinding="{Binding Salutation}" SelectedItem="{Binding SelectedSalutation,Mode=TwoWay}" Title="Select" BackgroundColor="#E6E6FA" VerticalOptions="Center" TextColor="Black">
+                            </Picker>
+                            <Label Text="Email :" FontAttributes="Bold" FontSize="Medium" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" />
+                            <Entry BackgroundColor="#E6E6FA" x:Name="GuestEmail" Placeholder="Enter E-Mail" TextColor="Black" HorizontalTextAlignment="Start" PlaceholderColor="#BBB8BF" FontSize="Medium" />
+                            <Label Text="Mobile/Tel :" FontAttributes="Bold" FontSize="Medium" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" />
+                            <Entry BackgroundColor="#E6E6FA" x:Name="GuestContact" Placeholder="Enter Mobile/Phone Number" TextColor="Black" HorizontalTextAlignment="Start" PlaceholderColor="#BBB8BF" FontSize="Medium" />
+                            <Label Text="House No :" FontAttributes="Bold" FontSize="Medium" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" />
+                            <Entry x:Name="HouseNumber" Placeholder="Enter House Number" BackgroundColor="#E6E6FA" TextColor="Black" HorizontalTextAlignment="Start" PlaceholderColor="#BBB8BF" FontSize="Medium" />
+                            <Label Text="Street :" FontAttributes="Bold" FontSize="Medium" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" />
+                            <Entry x:Name="Street" Placeholder="Enter Street" BackgroundColor="#E6E6FA" TextColor="Black" HorizontalTextAlignment="Start" PlaceholderColor="#BBB8BF" FontSize="Medium" />
+                            <Label Text="City :" FontAttributes="Bold" FontSize="Medium" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" />
+                            <Entry x:Name="City" Placeholder="Enter City" BackgroundColor="#E6E6FA" TextColor="Black" HorizontalTextAlignment="Start" PlaceholderColor="#BBB8BF" FontSize="Medium" />
+                            <Label Text="Passport Expiry :" FontAttributes="Bold" FontSize="Medium" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" />
+                            <DatePicker VerticalOptions="CenterAndExpand" Date="{x:Static sys:DateTime.Now}" BackgroundColor="#E6E6FA" TextColor="Black">
+                                <DatePicker.Format>yyyy-MM-dd</DatePicker.Format>
+                            </DatePicker>
+                            <Label Text="Language :" FontAttributes="Bold" FontSize="Medium" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" />
+                            <Picker Title="Select" BackgroundColor="#E6E6FA" TextColor="Black">
+                            </Picker>
+                            <StackLayout BackgroundColor="Transparent">
+                                <Button Text="Save" BackgroundColor="#008FBE" x:Name="buttonSave" TextColor="White">
+                                    <Button.BorderRadius>
+                                        <OnPlatform x:TypeArguments="x:Int32" iOS="20" Android="50" />
+                                    </Button.BorderRadius>
+                                    <Button.Style>
+                                    </Button.Style>
+                                </Button>
+                            </StackLayout>
+                        </StackLayout>
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

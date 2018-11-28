@@ -23,6 +23,7 @@ namespace CheckinMVVM.iOS
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             global::Xamarin.Forms.Forms.Init();
+            Xamarin.Forms.DependencyService.Register<Microblink.Forms.iOS.MicroblinkScannerFactoryImplementation>();
             FlexButton.Init();
             LoadApplication(new App());
 
