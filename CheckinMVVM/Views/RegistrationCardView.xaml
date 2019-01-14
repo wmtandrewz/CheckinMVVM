@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CheckinMVVM.Views.RegistrationCardView">
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+            <StackLayout BackgroundColor="#211261" Padding="10,10,10,10" Orientation="Vertical" VerticalOptions="Start">
+                <Label Text="Reservation ID" FontAttributes="Bold" FontSize="32" TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" />
+                <Label Text="Guest Profiles" FontSize="20" TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" />
+            </StackLayout>
+            
+            <StackLayout Padding="10,10,10,10">
+                <StackLayout BackgroundColor="#F1F0FF">
+                    <Grid Padding="15,15,15,15">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*">
+                            </RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*">
+                            </ColumnDefinition>
+                            <ColumnDefinition Width="*">
+                            </ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Image Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Source="Icons/guest.png" IsVisible="true" HeightRequest="40" WidthRequest="40" VerticalOptions="StartAndExpand" HorizontalOptions="EndAndExpand" />
+                        <Label Grid.Row="0" Grid.Column="1" Text="Main Guest Details" FontAttributes="Bold" FontSize="Medium" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" />
+                    </Grid>
+                </StackLayout>
+            </StackLayout>
+            
+            <StackLayout Padding="10,10,10,10">
+                <StackLayout BackgroundColor="#F1F0FF">
+                    <Grid Padding="15,15,15,15">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*">
+                            </RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*">
+                            </ColumnDefinition>
+                            <ColumnDefinition Width="*">
+                            </ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Image Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Source="Icons/reservation.png" IsVisible="true" HeightRequest="40" WidthRequest="40" VerticalOptions="StartAndExpand" HorizontalOptions="EndAndExpand" />
+                        <Label Grid.Row="0" Grid.Column="1" Text="Main Guest Details" FontAttributes="Bold" FontSize="Medium" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" />
+                    </Grid>
+                </StackLayout>
+            </StackLayout>
+            
+            <StackLayout Padding="10,10,10,10">
+                <StackLayout BackgroundColor="#F1F0FF">
+                    <Grid Padding="15,15,15,15">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*">
+                            </RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*">
+                            </ColumnDefinition>
+                            <ColumnDefinition Width="*">
+                            </ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Image Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Source="Icons/guests.png" IsVisible="true" HeightRequest="40" WidthRequest="40" VerticalOptions="StartAndExpand" HorizontalOptions="EndAndExpand" />
+                        <Label Grid.Row="0" Grid.Column="1" Text="Main Guest Details" FontAttributes="Bold" FontSize="Medium" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" />
+                    </Grid>
+                </StackLayout>
+            </StackLayout>
+            
+            <StackLayout Padding="10,10,10,10">
+                <StackLayout BackgroundColor="#F1F0FF">
+                    <Grid Padding="15,15,15,15">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*">
+                            </RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*">
+                            </ColumnDefinition>
+                            <ColumnDefinition Width="*">
+                            </ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Image Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Source="Icons/signature.png" IsVisible="true" HeightRequest="40" WidthRequest="40" VerticalOptions="StartAndExpand" HorizontalOptions="EndAndExpand" />
+                        <Label Grid.Row="0" Grid.Column="1" Text="Main Guest Details" FontAttributes="Bold" FontSize="Medium" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" />
+                    </Grid>
+                </StackLayout>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

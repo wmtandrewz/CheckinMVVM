@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CheckinMVVM.Views.GuestProfileView">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:customBehaviors="using:CheckinMVVM.Behaviors;assembly=EventToCommandBehavior" x:Class="CheckinMVVM.Views.GuestProfileView">
     <ContentPage.Content>
         <StackLayout>
             <StackLayout BackgroundColor="#211261" Padding="10,10,10,10" Orientation="Vertical" VerticalOptions="Start">
@@ -11,9 +11,13 @@
                 <StackLayout IsVisible="{Binding IsVisiblePage}">
                     <StackLayout Padding="10,0,10,10">
                         <Label FontAttributes="Bold" FontSize="Medium" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Text="Identification Method :" />
-                        <Picker Title="Select" ItemsSource="{Binding IDPickerItemlList}" ItemDisplayBinding="{Binding Method}" SelectedItem="{Binding SelectedIDMethod,Mode=TwoWay}" BackgroundColor="#E6E6FA" VerticalOptions="Center" TextColor="Black" />
+                        <Picker Title="Select" ItemsSource="{Binding IDPickerItemlList}" ItemDisplayBinding="{Binding Method}" SelectedItem="{Binding SelectedIDMethod,Mode=TwoWay}" BackgroundColor="#E6E6FA" VerticalOptions="Center" TextColor="Black">
+                            <Picker.Behaviors>
+                                <customBehaviors:EventToCommandBehavior EventName="SelectedIndexChanged" Command="{Binding IDPickerSelectedChangedCommand}" />
+                            </Picker.Behaviors>
+                        </Picker>
                         <Label FontAttributes="Bold" FontSize="Medium" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Text="Identification Number :" />
-                        <SearchBar Placeholder="Search Identification ID" FontSize="Medium" HorizontalTextAlignment="Start">
+                        <SearchBar Placeholder="Search Identification ID" Text="{Binding SearchBarText}" FontSize="Medium" SearchCommand="{Binding GuestSearchCommand}" HorizontalTextAlignment="Start">
                             <SearchBar.PlaceholderColor>
                                 <OnPlatform x:TypeArguments="Color" Android="Black" iOS="#373737">
                                 </OnPlatform>
@@ -43,9 +47,9 @@
                                 <Label FontAttributes="Bold" TextColor="White" FontSize="Medium" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Text="Passport Information" />
                             </StackLayout>
                             <Label Text="First Name :" FontAttributes="Bold" FontSize="Medium" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" />
-                            <Entry BackgroundColor="#E6E6FA" x:Name="GuestFisrtName" Placeholder="Enter First Name" TextColor="Black" HorizontalTextAlignment="Start" PlaceholderColor="#BBB8BF" FontSize="Medium" />
+                            <Entry BackgroundColor="#E6E6FA" Placeholder="Enter First Name" Text="{Binding GuestProfile.GuestFirstName,Mode=TwoWay}" TextColor="Black" HorizontalTextAlignment="Start" PlaceholderColor="#BBB8BF" FontSize="Medium" />
                             <Label Text="Last Name :" FontAttributes="Bold" FontSize="Medium" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" />
-                            <Entry BackgroundColor="#E6E6FA" x:Name="GuestLastName" Placeholder="Enter Last Name" TextColor="Black" HorizontalTextAlignment="Start" PlaceholderColor="#BBB8BF" FontSize="Medium" />
+                            <Entry BackgroundColor="#E6E6FA" Text="{Binding GuestProfile.GuestLastName,Mode=TwoWay}" Placeholder="Enter Last Name" TextColor="Black" HorizontalTextAlignment="Start" PlaceholderColor="#BBB8BF" FontSize="Medium" />
                             <Label Text="Gender :" FontAttributes="Bold" FontSize="Medium" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" />
                             <Picker ItemsSource="{Binding GenderList}" ItemDisplayBinding="{Binding Gender}" SelectedItem="{Binding SelectedGender,Mode=TwoWay}" Title="Select" BackgroundColor="#E6E6FA" TextColor="Black">
                             </Picker>
@@ -56,7 +60,7 @@
                             <Picker x:Name="Nationality" Title="Select" BackgroundColor="#E6E6FA" TextColor="Black">
                             </Picker>
                             <Label Text="Date Of Birth :" FontAttributes="Bold" FontSize="Medium" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" />
-                            <DatePicker VerticalOptions="CenterAndExpand" Date="{x:Static sys:DateTime.Now}" BackgroundColor="#E6E6FA" TextColor="Black">
+                            <DatePicker VerticalOptions="CenterAndExpand" Date="{Binding GuestProfile.DateOfBirth,,Mode=TwoWay}" BackgroundColor="#E6E6FA" TextColor="Black">
                                 <DatePicker.Format>yyyy-MM-dd</DatePicker.Format>
                             </DatePicker>
                             <StackLayout BackgroundColor="#211261">
@@ -66,17 +70,17 @@
                             <Picker ItemsSource="{Binding SalutationList}" ItemDisplayBinding="{Binding Salutation}" SelectedItem="{Binding SelectedSalutation,Mode=TwoWay}" Title="Select" BackgroundColor="#E6E6FA" VerticalOptions="Center" TextColor="Black">
                             </Picker>
                             <Label Text="Email :" FontAttributes="Bold" FontSize="Medium" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" />
-                            <Entry BackgroundColor="#E6E6FA" x:Name="GuestEmail" Placeholder="Enter E-Mail" TextColor="Black" HorizontalTextAlignment="Start" PlaceholderColor="#BBB8BF" FontSize="Medium" />
+                            <Entry BackgroundColor="#E6E6FA" Text="{Binding GuestProfile.Email,Mode=TwoWay}" Placeholder="Enter E-Mail" TextColor="Black" HorizontalTextAlignment="Start" PlaceholderColor="#BBB8BF" FontSize="Medium" />
                             <Label Text="Mobile/Tel :" FontAttributes="Bold" FontSize="Medium" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" />
-                            <Entry BackgroundColor="#E6E6FA" x:Name="GuestContact" Placeholder="Enter Mobile/Phone Number" TextColor="Black" HorizontalTextAlignment="Start" PlaceholderColor="#BBB8BF" FontSize="Medium" />
+                            <Entry BackgroundColor="#E6E6FA" Text="{Binding GuestProfile.ContactNumber,Mode=TwoWay}" Placeholder="Enter Mobile/Phone Number" TextColor="Black" HorizontalTextAlignment="Start" PlaceholderColor="#BBB8BF" FontSize="Medium" />
                             <Label Text="House No :" FontAttributes="Bold" FontSize="Medium" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" />
-                            <Entry x:Name="HouseNumber" Placeholder="Enter House Number" BackgroundColor="#E6E6FA" TextColor="Black" HorizontalTextAlignment="Start" PlaceholderColor="#BBB8BF" FontSize="Medium" />
+                            <Entry Text="{Binding GuestProfile.HouseNumber,Mode=TwoWay}" Placeholder="Enter House Number" BackgroundColor="#E6E6FA" TextColor="Black" HorizontalTextAlignment="Start" PlaceholderColor="#BBB8BF" FontSize="Medium" />
                             <Label Text="Street :" FontAttributes="Bold" FontSize="Medium" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" />
-                            <Entry x:Name="Street" Placeholder="Enter Street" BackgroundColor="#E6E6FA" TextColor="Black" HorizontalTextAlignment="Start" PlaceholderColor="#BBB8BF" FontSize="Medium" />
+                            <Entry Text="{Binding GuestProfile.Street,Mode=TwoWay}" Placeholder="Enter Street" BackgroundColor="#E6E6FA" TextColor="Black" HorizontalTextAlignment="Start" PlaceholderColor="#BBB8BF" FontSize="Medium" />
                             <Label Text="City :" FontAttributes="Bold" FontSize="Medium" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" />
-                            <Entry x:Name="City" Placeholder="Enter City" BackgroundColor="#E6E6FA" TextColor="Black" HorizontalTextAlignment="Start" PlaceholderColor="#BBB8BF" FontSize="Medium" />
+                            <Entry Text="{Binding GuestProfile.City}" Placeholder="Enter City" BackgroundColor="#E6E6FA" TextColor="Black" HorizontalTextAlignment="Start" PlaceholderColor="#BBB8BF" FontSize="Medium" />
                             <Label Text="Passport Expiry :" FontAttributes="Bold" FontSize="Medium" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" />
-                            <DatePicker VerticalOptions="CenterAndExpand" Date="{x:Static sys:DateTime.Now}" BackgroundColor="#E6E6FA" TextColor="Black">
+                            <DatePicker VerticalOptions="CenterAndExpand" Date="{Binding GuestProfile.DateOfIdExpiry,Mode=TwoWay}" BackgroundColor="#E6E6FA" TextColor="Black">
                                 <DatePicker.Format>yyyy-MM-dd</DatePicker.Format>
                             </DatePicker>
                             <Label Text="Language :" FontAttributes="Bold" FontSize="Medium" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" />

@@ -20,6 +20,7 @@ namespace CheckinMVVM.ViewModels
         public ICommand PageOnLoadCommand { get; }
         public ICommand LoadRoomListCommand { get; }
         public ICommand GuestViewCommand { get; }
+        public ICommand RegistrationCardViewCommand { get; }
 
         private ReservationsHeaderModel _reservationsHeaderModel;
         public ReservationsHeaderModel ReservationsHeader
@@ -74,6 +75,20 @@ namespace CheckinMVVM.ViewModels
             {
                 _reservationDetailsModel = value;
                 Constants.SelectedReservationDetailSet = value;
+
+                if (_reservationDetailsModel != null && _reservationDetailsModel.GuestProfilesList.Any(x => string.IsNullOrEmpty(x.GuestCode)))
+                {
+                    BadgeGuestIcon = "Icons/warning.png";
+                }
+                else if (_reservationDetailsModel != null && _reservationDetailsModel.GuestProfilesList.Count(x => !string.IsNullOrEmpty(x.GuestCode)) == Convert.ToInt32(ReservationDetails.NumberOfPax))
+                {
+                    BadgeGuestIcon = "Icons/tick.png";
+                }
+                else
+                {
+                    BadgeGuestIcon = string.Empty;
+                }
+
                 OnPropertyChanged("ReservationDetails");
             }
         }
@@ -150,6 +165,21 @@ namespace CheckinMVVM.ViewModels
             }
         }
 
+        private string _badgeGuestIcon = string.Empty;
+        public string BadgeGuestIcon
+        {
+            get
+            {
+                return _badgeGuestIcon;
+            }
+
+            set
+            {
+                _badgeGuestIcon = value;
+                OnPropertyChanged("BadgeGuestIcon");
+            }
+        }
+
         public MainActivityViewModel(ReservationsHeaderModel reservationsHeader,INavigation navigation)
         {
             ReservationsHeader = reservationsHeader;
@@ -160,6 +190,12 @@ namespace CheckinMVVM.ViewModels
             PageOnLoadCommand = new Command(async () => await PageOnLoad());
             LoadRoomListCommand = new Command(async () => await LoadRoomListPage());
             GuestViewCommand = new Command(async () => await LoadGuestView());
+            RegistrationCardViewCommand = new Command(async () => await LoadRegistrtaionCardView());
+        }
+
+        private async Task LoadRegistrtaionCardView()
+        {
+            await this.NavigationStack.PushAsync(new RegistrationCardView());
         }
 
         private async Task LoadGuestView()

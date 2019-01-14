@@ -7,10 +7,14 @@ using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using CheckinMVVM.Globals;
+using CheckinMVVM.Helpers;
 using CheckinMVVM.Models;
+using CheckinMVVM.Services;
 using Microblink.Forms.Core;
 using Microblink.Forms.Core.Overlays;
 using Microblink.Forms.Core.Recognizers;
+using Microblink.Forms.iOS.Recognizers;
+using Newtonsoft.Json;
 using Xamarin.Forms;
 
 namespace CheckinMVVM.ViewModels
@@ -20,6 +24,8 @@ namespace CheckinMVVM.ViewModels
 
         public ICommand ScanPassportCommand { get;}
         public ICommand PageOnLoadCommand { get; }
+        public ICommand GuestSearchCommand { get; }
+        public ICommand IDPickerSelectedChangedCommand { get; }
 
         private IMicroblinkScanner blinkID;
         private IMrtdRecognizer mrtdRecognizer;
@@ -206,7 +212,7 @@ namespace CheckinMVVM.ViewModels
             }
         }
 
-        private bool _isVisiblePage = false;
+        private bool _isVisiblePage = true;
         public bool IsVisiblePage
         {
             get
@@ -236,15 +242,63 @@ namespace CheckinMVVM.ViewModels
             }
         }
 
+        private string _searchBarText;
+        public string SearchBarText
+        {
+            get
+            {
+                return _searchBarText;
+            }
+
+            set
+            {
+                _searchBarText = value;
+                OnPropertyChanged("SearchBarText");
+            }
+        }
+
         public GuestProfileViewModel()
         {
             ScanPassportCommand = new Command(ScanPassport);
             PageOnLoadCommand = new Command(PageOnLoad);
+            GuestSearchCommand = new Command(async() => await GuestSearchById());
+            IDPickerSelectedChangedCommand = new Command(IDSelectedItemChanged);
             InitializeBlinkIdScanner();
+        }
+
+        private void IDSelectedItemChanged()
+        {
+
+        }
+
+        private async Task GuestSearchById()
+        {
+            IsVisiblePage = false;
+            IsVisibleIndicator = true;
+            IsRunningIndicator = true;
+
+            var searchKey = SearchBarText;
+
+            var responce = await GetAPIservice.FindGuestByID(Settings.HotelCode, SelectedIDMethod.Code , searchKey);
+            GuestDetailsModel guestDetailsModel = JsonConvert.DeserializeObject<GuestDetailsModel>(responce);
+
+            if(guestDetailsModel != null)
+            {
+                GuestProfile = guestDetailsModel;
+
+                var GuestProfileTemp = guestDetailsModel;
+                GuestProfileTemp.Gender = Constants.Genders.FirstOrDefault(x => x.Code == GuestProfileTemp.Gender).Gender;
+                GuestProfileTemp.Salutation = Constants.Salutations.FirstOrDefault(x => x.Code == GuestProfileTemp.Salutation).Salutation;
+
+                SetGuestFormData(GuestProfileTemp);
+            }
+
+
         }
 
         private void PageOnLoad()
         {
+            IsVisiblePage = false;
             IsVisibleIndicator = true;
             IsRunningIndicator = true;
 
@@ -254,14 +308,33 @@ namespace CheckinMVVM.ViewModels
                 {
                     GuestProfile = Constants.SelectedGuestProfile;
 
-                    IsVisibleGuestInformation = true;
-                    IsVisibleHint = false;
-                    IsVisiblePage = true;
-
-                    IsVisibleIndicator = false;
-                    IsRunningIndicator = false;
+                    SetGuestFormData(Constants.SelectedGuestProfile);
                 }
+
+                IsVisiblePage = true;
             }
+        }
+
+        private void SetGuestFormData(GuestDetailsModel guest)
+        {
+            //Set ID method
+            SelectedIDMethod = new ObservableCollection<IDMethodModel>(Constants.IdentificationMethods).FirstOrDefault(x => x.Code == guest.IdentificationMethod);
+
+            //Set ID
+            SearchBarText = Constants.SelectedGuestProfile.PassportIdNumber;
+
+            //Set Gender
+            SelectedGender = new ObservableCollection<GenderModel>(Constants.Genders).FirstOrDefault(x => x.Gender == guest.Gender);
+
+            //Set Salutation
+            SelectedSalutation = new ObservableCollection<SalutationModel>(Constants.Salutations).FirstOrDefault(x => x.Salutation == guest.Salutation);
+
+            IsVisibleGuestInformation = true;
+            IsVisibleHint = false;
+            IsVisiblePage = true;
+
+            IsVisibleIndicator = false;
+            IsRunningIndicator = false;
         }
 
         private void ScanPassport()
@@ -281,7 +354,7 @@ namespace CheckinMVVM.ViewModels
             string licenseKey = string.Empty;
             if (Device.RuntimePlatform == Device.iOS)
             {
-                licenseKey = "sRwAAAEQY29tLmNobWwuaXQuY2Nmc0iUtoXG/ef1YJ5j3+wZt4ACQp8Dvsyg0F8b+R8jIBvR/4EX/To6qrar3WS6QpvHTb7jeTBHj7ge3i9cDb9A5Ase0gTaM3oUykCdTaiRXNXRtLOpw0rpYr/Y54KX7Od/Wsl4kbslvEyBzJyqFj+pc705ujSq/fzCzy5pFXU86miXzieXEPHwfetam92Yc0/YcQ9JW0bU17z5xfBoQhOTZdR5dKSJxJHP7N0Zm9+Yl7N9M5RLkrTzQbID";
+                licenseKey = "sRwAAAEQY29tLmNobWwuaXQuY2Nmc0iUtoUk/ef1YJ5j3+j5toBM9aJu3EN0SDbB/mPKFx+V0MNFRZwwmNkzl1VU8JhdIYmouNK1poJKQCdOpB6MZ7W1x/pIarGykttt1FFrEHkvAE0NW8NEmidSg8mY+FCvJWVAiQlOHsSXw5YbyjtZv1lGDrU6zai0qefO7+VpwI3w2Q4GwlVybN7SlkSoU1vb8zh0y5Gc2eC5vVDyi7XoSZY/L1lUD1VsBWya5RBti4r7QzPEPy9M/WZp8TNJrw==";
             }
             else
             {
@@ -317,6 +390,24 @@ namespace CheckinMVVM.ViewModels
                         var result = mrtdRecognizer.Result;
 
                         ScanResult = result.MrzResult;
+                        SelectedIDMethod = Constants.IdentificationMethods.FirstOrDefault(x => x.Code == "2");
+
+                        if(result.MrzResult.Gender == "F")
+                        {
+                            SelectedGender = Constants.Genders.FirstOrDefault(x => x.Gender == "Female");
+                        }
+                        else
+                        {
+                            SelectedGender = Constants.Genders.FirstOrDefault(x => x.Gender == "Male");
+                        }
+
+
+                        IsVisibleGuestInformation = true;
+                        IsVisibleHint = false;
+                        IsVisiblePage = true;
+
+                        IsVisibleIndicator = false;
+                        IsRunningIndicator = false;
 
                         //FullDocumentImge = result.FullDocumentImage;
                         //FrameImageSource = mrtdSuccessFrameGrabberRecognizer.Result.SuccessFrame;

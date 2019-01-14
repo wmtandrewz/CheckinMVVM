@@ -202,5 +202,37 @@ namespace CheckinMVVM.Services
                 return e.Message;
             }
         }
+
+        public static async Task<string> FindGuestByID(string hotelCode, string identificationMethod, string identificationNumber)
+        {
+            try
+            {
+                using (HttpClient apiClient = new HttpClient())
+                {
+                    apiClient.BaseAddress = new Uri(Settings.BaseUri);
+                    apiClient.DefaultRequestHeaders.Add("AuthToken", Constants.AccessToken);
+                    apiClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                    var apiResult = await apiClient.GetAsync($"retrive/GetGuestDetailsByIDNUmber?hotelCode={hotelCode}&identificationMethod={identificationMethod}&identificationNumber={identificationNumber}");
+
+                    if (apiResult.IsSuccessStatusCode)
+                    {
+                        using (HttpContent responceContent = apiResult.Content)
+                        {
+                            string roomList = await responceContent.ReadAsStringAsync();
+                            return roomList;
+                        }
+                    }
+                    else
+                    {
+                        return await apiResult.Content.ReadAsStringAsync();
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                return e.Message;
+            }
+        }
     }
 }

@@ -46,6 +46,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\RegistrationCardView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
@@ -103,6 +107,10 @@
     <Compile Include="$(MSBuildThisFileDirectory)Models\GenderModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\SalutationModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\GuestViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\RegistrationCardView.xaml.cs">
+      <DependentUpon>RegistrationCardView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\RegistrationCardViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Models\" />
