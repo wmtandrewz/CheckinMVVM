@@ -8,7 +8,8 @@ namespace CheckinMVVM.Views
 {
     public partial class MainActivityView : ContentPage
     {
-        MainActivityViewModel mainActivityViewModel;
+        private MainActivityViewModel mainActivityViewModel;
+        private bool IsLoaded = false;
 
         public MainActivityView(ReservationsHeaderModel reservationsHeader) 
         {
@@ -21,7 +22,12 @@ namespace CheckinMVVM.Views
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            mainActivityViewModel.PageOnLoadCommand.Execute(null);
+
+            if (!IsLoaded)
+            {
+                mainActivityViewModel.PageOnLoadCommand.Execute(null);
+                IsLoaded = true;
+            }
         }
     }
 }

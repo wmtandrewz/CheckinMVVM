@@ -1,87 +1,218 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CheckinMVVM.Views.RegistrationCardView">
     <ContentPage.Content>
-        <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
-            <StackLayout BackgroundColor="#211261" Padding="10,10,10,10" Orientation="Vertical" VerticalOptions="Start">
-                <Label Text="Reservation ID" FontAttributes="Bold" FontSize="32" TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" />
-                <Label Text="Guest Profiles" FontSize="20" TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" />
-            </StackLayout>
-            
-            <StackLayout Padding="10,10,10,10">
-                <StackLayout BackgroundColor="#F1F0FF">
-                    <Grid Padding="15,15,15,15">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="*">
-                            </RowDefinition>
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*">
-                            </ColumnDefinition>
-                            <ColumnDefinition Width="*">
-                            </ColumnDefinition>
-                        </Grid.ColumnDefinitions>
-                        <Image Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Source="Icons/guest.png" IsVisible="true" HeightRequest="40" WidthRequest="40" VerticalOptions="StartAndExpand" HorizontalOptions="EndAndExpand" />
-                        <Label Grid.Row="0" Grid.Column="1" Text="Main Guest Details" FontAttributes="Bold" FontSize="Medium" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" />
-                    </Grid>
+        <ScrollView>
+            <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                <StackLayout BackgroundColor="#211261" Padding="10,10,10,10" Orientation="Vertical" VerticalOptions="Start">
+                    <Label Text="Reservation ID" FontAttributes="Bold" FontSize="32" TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" />
+                    <Label Text="Guest Profiles" FontSize="20" TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" />
+                </StackLayout>
+                <StackLayout Padding="10,10,10,10">
+                    <StackLayout BackgroundColor="#F1F0FF">
+                        <Grid Padding="50,15,15,15">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="50">
+                                </RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="40">
+                                </ColumnDefinition>
+                                <ColumnDefinition Width="*">
+                                </ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Image Grid.Row="0" Grid.Column="0" Source="Icons/guest.png" IsVisible="true" HeightRequest="40" WidthRequest="40" VerticalOptions="Center" HorizontalOptions="StartAndExpand" />
+                            <Label Grid.Row="0" Grid.Column="1" Text="Main Guest Details" FontAttributes="Bold" FontSize="Large" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="Center" />
+                        </Grid>
+                    </StackLayout>
+                    <StackLayout BackgroundColor="White" Margin="10" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" MinimumHeightRequest="250">
+                        <Grid Margin="100,10,100,10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="200" />
+                                <ColumnDefinition Width="20" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Row="0" Grid.Column="0" Text="Title" FontAttributes="Bold" TextColor="#211261" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" />
+                            <Label Grid.Row="0" Grid.Column="1" Text=":" FontAttributes="Bold" TextColor="#211261" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" />
+                            <Label Grid.Row="0" Grid.Column="2" Text="{Binding MainGuestProfile.Salutation}" VerticalTextAlignment="Center" />
+                            
+                            <Label Grid.Row="1" Grid.Column="0" Text="First Name" FontAttributes="Bold" TextColor="#211261" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" />
+                            <Label Grid.Row="1" Grid.Column="1" Text=":" FontAttributes="Bold" TextColor="#211261" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" />
+                            <Label Grid.Row="1" Grid.Column="2" Text="{Binding MainGuestProfile.GuestFirstName}" VerticalTextAlignment="Center" />
+                            
+                            <Label Grid.Row="2" Grid.Column="0" Text="Last Name" FontAttributes="Bold" TextColor="#211261" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" />
+                            <Label Grid.Row="2" Grid.Column="1" Text=":" FontAttributes="Bold" TextColor="#211261" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" />
+                            <Label Grid.Row="2" Grid.Column="2" Text="{Binding MainGuestProfile.GuestLastName}" VerticalTextAlignment="Center" />
+                            
+                            <Label Grid.Row="3" Grid.Column="0" Text="Email" FontAttributes="Bold" TextColor="#211261" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" />
+                            <Label Grid.Row="3" Grid.Column="1" Text=":" FontAttributes="Bold" TextColor="#211261" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" />
+                            <Label Grid.Row="3" Grid.Column="2" Text="{Binding MainGuestProfile.Email}" VerticalTextAlignment="Center" />
+                            
+                            <Label Grid.Row="4" Grid.Column="0" Text="Contact Number" FontAttributes="Bold" TextColor="#211261" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" />
+                            <Label Grid.Row="4" Grid.Column="1" Text=":" FontAttributes="Bold" TextColor="#211261" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" />
+                            <Label Grid.Row="4" Grid.Column="2" Text="{Binding MainGuestProfile.ContactNumber}" VerticalTextAlignment="Center" />
+                            
+                            <Label Grid.Row="5" Grid.Column="0" Text="Date of Birth" FontAttributes="Bold" TextColor="#211261" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" />
+                            <Label Grid.Row="5" Grid.Column="1" Text=":" FontAttributes="Bold" TextColor="#211261" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" />
+                            <Label Grid.Row="5" Grid.Column="2" Text="{Binding MainGuestProfile.DateOfBirth}" VerticalTextAlignment="Center" />
+                            
+                            <Label Grid.Row="6" Grid.Column="0" Text="NIC / Passport No." FontAttributes="Bold" TextColor="#211261" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" />
+                            <Label Grid.Row="6" Grid.Column="1" Text=":" FontAttributes="Bold" TextColor="#211261" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" />
+                            <Label Grid.Row="6" Grid.Column="2" Text="{Binding MainGuestProfile.PassportIdNumber}" VerticalTextAlignment="Center" />
+                            
+                            <Label Grid.Row="7" Grid.Column="0" Text="House No." FontAttributes="Bold" TextColor="#211261" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" />
+                            <Label Grid.Row="7" Grid.Column="1" Text=":" FontAttributes="Bold" TextColor="#211261" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" />
+                            <Label Grid.Row="7" Grid.Column="2" Text="{Binding MainGuestProfile.HouseNumber}" VerticalTextAlignment="Center" />
+                            
+                            <Label Grid.Row="8" Grid.Column="0" Text="Street" FontAttributes="Bold" TextColor="#211261" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" />
+                            <Label Grid.Row="8" Grid.Column="1" Text=":" FontAttributes="Bold" TextColor="#211261" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" />
+                            <Label Grid.Row="8" Grid.Column="2" Text="{Binding MainGuestProfile.Street}" VerticalTextAlignment="Center" />
+                            
+                            <Label Grid.Row="9" Grid.Column="0" Text="City" FontAttributes="Bold" TextColor="#211261" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" />
+                            <Label Grid.Row="9" Grid.Column="1" Text=":" FontAttributes="Bold" TextColor="#211261" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" />
+                            <Label Grid.Row="9" Grid.Column="2" Text="{Binding MainGuestProfile.City}" VerticalTextAlignment="Center" />
+                            
+                            <Label Grid.Row="10" Grid.Column="0" Text="Country" FontAttributes="Bold" TextColor="#211261" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" />
+                            <Label Grid.Row="10" Grid.Column="1" Text=":" FontAttributes="Bold" TextColor="#211261" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" />
+                            <Label Grid.Row="10" Grid.Column="2" Text="{Binding MainGuestProfile.Country}" VerticalTextAlignment="Center" />
+                            
+                            <Label Grid.Row="11" Grid.Column="0" Text="Nationality" FontAttributes="Bold" TextColor="#211261" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" />
+                            <Label Grid.Row="11" Grid.Column="1" Text=":" FontAttributes="Bold" TextColor="#211261" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" />
+                            <Label Grid.Row="11" Grid.Column="2" Text="{Binding MainGuestProfile.Nationality}" VerticalTextAlignment="Center" />
+                        </Grid>
+                    </StackLayout>
+                </StackLayout>
+                <StackLayout Padding="10,10,10,10">
+                    <StackLayout BackgroundColor="#F1F0FF">
+                        <Grid Padding="50,15,15,15">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="50">
+                                </RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="40">
+                                </ColumnDefinition>
+                                <ColumnDefinition Width="*">
+                                </ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Image Grid.Row="0" Grid.Column="0" Source="Icons/reservation.png" IsVisible="true" HeightRequest="40" WidthRequest="40" VerticalOptions="Center" HorizontalOptions="StartAndExpand" />
+                            <Label Grid.Row="0" Grid.Column="1" Text="Reservation Details" FontAttributes="Bold" FontSize="Large" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="Center" />
+                        </Grid>
+                    </StackLayout>
+                    <StackLayout BackgroundColor="White" Margin="10" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" MinimumHeightRequest="250">
+                        <Grid Margin="100,10,100,10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="200" />
+                                <ColumnDefinition Width="20" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Row="0" Grid.Column="0" Text="Arrival Date" FontAttributes="Bold" TextColor="#211261" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" />
+                            <Label Grid.Row="0" Grid.Column="1" Text=":" FontAttributes="Bold" TextColor="#211261" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" />
+                            <Label Grid.Row="0" Grid.Column="2" Text="{Binding ReservationDetails.ArrivalDate}" VerticalTextAlignment="Center" />
+                            
+                            <Label Grid.Row="1" Grid.Column="0" Text="Number of Nights" FontAttributes="Bold" TextColor="#211261" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" />
+                            <Label Grid.Row="1" Grid.Column="1" Text=":" FontAttributes="Bold" TextColor="#211261" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" />
+                            <Label Grid.Row="1" Grid.Column="2" Text="{Binding ReservationDetails.NumberOfNights}" VerticalTextAlignment="Center" />
+                            
+                            <Label Grid.Row="2" Grid.Column="0" Text="Departure Date" FontAttributes="Bold" TextColor="#211261" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" />
+                            <Label Grid.Row="2" Grid.Column="1" Text=":" FontAttributes="Bold" TextColor="#211261" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" />
+                            <Label Grid.Row="2" Grid.Column="2" Text="{Binding ReservationDetails.DepartureDate}" VerticalTextAlignment="Center" />
+                            
+                            <Label Grid.Row="3" Grid.Column="0" Text="Number of Pax" FontAttributes="Bold" TextColor="#211261" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" />
+                            <Label Grid.Row="3" Grid.Column="1" Text=":" FontAttributes="Bold" TextColor="#211261" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" />
+                            <Label Grid.Row="3" Grid.Column="2" Text="{Binding ReservationDetails.NumberOfPax}" VerticalTextAlignment="Center" />
+                            
+                            <Label Grid.Row="4" Grid.Column="0" Text="Room Type" FontAttributes="Bold" TextColor="#211261" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" />
+                            <Label Grid.Row="4" Grid.Column="1" Text=":" FontAttributes="Bold" TextColor="#211261" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" />
+                            <Label Grid.Row="4" Grid.Column="2" Text="{Binding ReservationDetails.RoomType}" VerticalTextAlignment="Center" />
+                            
+                            <Label Grid.Row="5" Grid.Column="0" Text="Room Number" FontAttributes="Bold" TextColor="#211261" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" />
+                            <Label Grid.Row="5" Grid.Column="1" Text=":" FontAttributes="Bold" TextColor="#211261" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" />
+                            <Label Grid.Row="5" Grid.Column="2" Text="{Binding ReservationDetails.RoomNumber}" TextColor="{Binding ReservationDetails.RoomStatusColor}" VerticalTextAlignment="Center" />
+                            
+                            <Label Grid.Row="6" Grid.Column="0" Text="Room Status" FontAttributes="Bold" TextColor="#211261" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" />
+                            <Label Grid.Row="6" Grid.Column="1" Text=":" FontAttributes="Bold" TextColor="#211261" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" />
+                            <Label Grid.Row="6" Grid.Column="2" Text="{Binding ReservationDetails.RoomStatus}" TextColor="{Binding ReservationDetails.RoomStatusColor}" VerticalTextAlignment="Center" />
+                            
+                            <Label Grid.Row="7" Grid.Column="0" Text="Meal Plan" FontAttributes="Bold" TextColor="#211261" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" />
+                            <Label Grid.Row="7" Grid.Column="1" Text=":" FontAttributes="Bold" TextColor="#211261" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" />
+                            <Label Grid.Row="7" Grid.Column="2" Text="{Binding ReservationDetails.MealPlan}" VerticalTextAlignment="Center" />
+                            
+                            <Label Grid.Row="8" Grid.Column="0" Text="Arrival Flight" FontAttributes="Bold" TextColor="#211261" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" />
+                            <Label Grid.Row="8" Grid.Column="1" Text=":" FontAttributes="Bold" TextColor="#211261" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" />
+                            <Label Grid.Row="8" Grid.Column="2" Text="{Binding ReservationDetails.ArrivalFlight}" VerticalTextAlignment="Center" />
+                            
+                            <Label Grid.Row="9" Grid.Column="0" Text="Departure Flight" FontAttributes="Bold" TextColor="#211261" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" />
+                            <Label Grid.Row="9" Grid.Column="1" Text=":" FontAttributes="Bold" TextColor="#211261" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" />
+                            <Label Grid.Row="9" Grid.Column="2" Text="{Binding ReservationDetails.DepartureFlight}" VerticalTextAlignment="Center" />
+                        </Grid>
+                    </StackLayout>
+                </StackLayout>
+                <StackLayout Padding="10,10,10,10">
+                    <StackLayout BackgroundColor="#F1F0FF">
+                        <Grid Padding="50,15,15,15">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="50">
+                                </RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="40">
+                                </ColumnDefinition>
+                                <ColumnDefinition Width="*">
+                                </ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Image Grid.Row="0" Grid.Column="0" Source="Icons/guests.png" IsVisible="true" HeightRequest="40" WidthRequest="40" VerticalOptions="Center" HorizontalOptions="StartAndExpand" />
+                            <Label Grid.Row="0" Grid.Column="1" Text="Guest List" FontAttributes="Bold" FontSize="Large" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="Center" />
+                        </Grid>
+                    </StackLayout>
+                    <StackLayout>
+                        <ListView ItemsSource="{Binding GuestList}" RowHeight="35" SeparatorVisibility="Default" SeparatorColor="#660099" BackgroundColor="Transparent" CachingStrategy="RetainElement">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <RelativeLayout>
+                                            <Grid BackgroundColor="Transparent" Padding="0,0,0,0">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="*" />
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="4*" />
+                                                    <ColumnDefinition Width="4*" />
+                                                    <ColumnDefinition Width="15*" />
+                                                    <ColumnDefinition Width="10*" />
+                                                    <ColumnDefinition Width="1*" />
+                                                </Grid.ColumnDefinitions>
+                                                <Label Grid.Row="0" Grid.Column="0" FontFamily="Verdana" Text="{Binding GuestNumber}" Font="Bold" FontSize="Small" TextColor="#660099" VerticalOptions="EndAndExpand" HorizontalOptions="EndAndExpand" />
+                                                <Label Grid.Row="0" Grid.Column="1" FontFamily="Verdana" Text="." Font="Bold" FontSize="Small" TextColor="#660099" VerticalOptions="EndAndExpand" HorizontalOptions="StartAndExpand" />
+                                                <Label Grid.Row="0" Grid.Column="2" FontFamily="Verdana" Text="{Binding GuestFirstName}" Font="Bold" FontSize="Small" TextColor="#4169E1" VerticalOptions="EndAndExpand" HorizontalOptions="StartAndExpand" LineBreakMode="TailTruncation" />
+                                                <Label Grid.Row="0" Grid.Column="3" FontFamily="Verdana" Text="Edit Profile" Font="Bold" FontSize="Small" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand" TextColor="#660099" />
+                                                <Image Grid.Row="0" Grid.Column="4" Source="Icons/NavigationRight.png" IsVisible="true" HeightRequest="25" WidthRequest="25" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" />
+                                            </Grid>
+                                        </RelativeLayout>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </StackLayout>
+                </StackLayout>
+                <StackLayout Padding="10,10,10,10">
+                    <StackLayout BackgroundColor="#F1F0FF">
+                        <Grid Padding="50,15,15,15">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="50">
+                                </RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="40">
+                                </ColumnDefinition>
+                                <ColumnDefinition Width="*">
+                                </ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Image Grid.Row="0" Grid.Column="0" Source="Icons/signature.png" IsVisible="true" HeightRequest="40" WidthRequest="40" VerticalOptions="Center" HorizontalOptions="StartAndExpand" />
+                            <Label Grid.Row="0" Grid.Column="1" Text="Sign and Check-in" FontAttributes="Bold" FontSize="Medium" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="Center" />
+                        </Grid>
+                    </StackLayout>
                 </StackLayout>
             </StackLayout>
-            
-            <StackLayout Padding="10,10,10,10">
-                <StackLayout BackgroundColor="#F1F0FF">
-                    <Grid Padding="15,15,15,15">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="*">
-                            </RowDefinition>
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*">
-                            </ColumnDefinition>
-                            <ColumnDefinition Width="*">
-                            </ColumnDefinition>
-                        </Grid.ColumnDefinitions>
-                        <Image Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Source="Icons/reservation.png" IsVisible="true" HeightRequest="40" WidthRequest="40" VerticalOptions="StartAndExpand" HorizontalOptions="EndAndExpand" />
-                        <Label Grid.Row="0" Grid.Column="1" Text="Main Guest Details" FontAttributes="Bold" FontSize="Medium" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" />
-                    </Grid>
-                </StackLayout>
-            </StackLayout>
-            
-            <StackLayout Padding="10,10,10,10">
-                <StackLayout BackgroundColor="#F1F0FF">
-                    <Grid Padding="15,15,15,15">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="*">
-                            </RowDefinition>
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*">
-                            </ColumnDefinition>
-                            <ColumnDefinition Width="*">
-                            </ColumnDefinition>
-                        </Grid.ColumnDefinitions>
-                        <Image Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Source="Icons/guests.png" IsVisible="true" HeightRequest="40" WidthRequest="40" VerticalOptions="StartAndExpand" HorizontalOptions="EndAndExpand" />
-                        <Label Grid.Row="0" Grid.Column="1" Text="Main Guest Details" FontAttributes="Bold" FontSize="Medium" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" />
-                    </Grid>
-                </StackLayout>
-            </StackLayout>
-            
-            <StackLayout Padding="10,10,10,10">
-                <StackLayout BackgroundColor="#F1F0FF">
-                    <Grid Padding="15,15,15,15">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="*">
-                            </RowDefinition>
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*">
-                            </ColumnDefinition>
-                            <ColumnDefinition Width="*">
-                            </ColumnDefinition>
-                        </Grid.ColumnDefinitions>
-                        <Image Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Source="Icons/signature.png" IsVisible="true" HeightRequest="40" WidthRequest="40" VerticalOptions="StartAndExpand" HorizontalOptions="EndAndExpand" />
-                        <Label Grid.Row="0" Grid.Column="1" Text="Main Guest Details" FontAttributes="Bold" FontSize="Medium" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" />
-                    </Grid>
-                </StackLayout>
-            </StackLayout>
-        </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>
