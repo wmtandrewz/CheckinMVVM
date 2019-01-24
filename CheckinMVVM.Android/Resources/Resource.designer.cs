@@ -26,6 +26,52 @@ namespace CheckinMVVM.Droid
 		
 		public static void UpdateIdValues()
 		{
+			global::Xamarin.Controls.Resource.Attribute.captionText = global::CheckinMVVM.Droid.Resource.Attribute.captionText;
+			global::Xamarin.Controls.Resource.Attribute.captionTextColor = global::CheckinMVVM.Droid.Resource.Attribute.captionTextColor;
+			global::Xamarin.Controls.Resource.Attribute.captionTextSize = global::CheckinMVVM.Droid.Resource.Attribute.captionTextSize;
+			global::Xamarin.Controls.Resource.Attribute.clearLabelText = global::CheckinMVVM.Droid.Resource.Attribute.clearLabelText;
+			global::Xamarin.Controls.Resource.Attribute.clearLabelTextColor = global::CheckinMVVM.Droid.Resource.Attribute.clearLabelTextColor;
+			global::Xamarin.Controls.Resource.Attribute.clearLabelTextSize = global::CheckinMVVM.Droid.Resource.Attribute.clearLabelTextSize;
+			global::Xamarin.Controls.Resource.Attribute.signatureLineColor = global::CheckinMVVM.Droid.Resource.Attribute.signatureLineColor;
+			global::Xamarin.Controls.Resource.Attribute.signatureLineSpacing = global::CheckinMVVM.Droid.Resource.Attribute.signatureLineSpacing;
+			global::Xamarin.Controls.Resource.Attribute.signatureLineWidth = global::CheckinMVVM.Droid.Resource.Attribute.signatureLineWidth;
+			global::Xamarin.Controls.Resource.Attribute.signaturePromptText = global::CheckinMVVM.Droid.Resource.Attribute.signaturePromptText;
+			global::Xamarin.Controls.Resource.Attribute.signaturePromptTextColor = global::CheckinMVVM.Droid.Resource.Attribute.signaturePromptTextColor;
+			global::Xamarin.Controls.Resource.Attribute.signaturePromptTextSize = global::CheckinMVVM.Droid.Resource.Attribute.signaturePromptTextSize;
+			global::Xamarin.Controls.Resource.Attribute.strokeColor = global::CheckinMVVM.Droid.Resource.Attribute.strokeColor;
+			global::Xamarin.Controls.Resource.Attribute.strokeWidth = global::CheckinMVVM.Droid.Resource.Attribute.strokeWidth;
+			global::Xamarin.Controls.Resource.Color.signature_pad_dark_color = global::CheckinMVVM.Droid.Resource.Color.signature_pad_dark_color;
+			global::Xamarin.Controls.Resource.Color.signature_pad_light_color = global::CheckinMVVM.Droid.Resource.Color.signature_pad_light_color;
+			global::Xamarin.Controls.Resource.Dimension.signature_pad_font_size = global::CheckinMVVM.Droid.Resource.Dimension.signature_pad_font_size;
+			global::Xamarin.Controls.Resource.Dimension.signature_pad_line_thickness = global::CheckinMVVM.Droid.Resource.Dimension.signature_pad_line_thickness;
+			global::Xamarin.Controls.Resource.Dimension.signature_pad_narrow_spacing = global::CheckinMVVM.Droid.Resource.Dimension.signature_pad_narrow_spacing;
+			global::Xamarin.Controls.Resource.Dimension.signature_pad_wide_spacing = global::CheckinMVVM.Droid.Resource.Dimension.signature_pad_wide_spacing;
+			global::Xamarin.Controls.Resource.Drawable.signature_pad_background = global::CheckinMVVM.Droid.Resource.Drawable.signature_pad_background;
+			global::Xamarin.Controls.Resource.Id.background_image = global::CheckinMVVM.Droid.Resource.Id.background_image;
+			global::Xamarin.Controls.Resource.Id.caption = global::CheckinMVVM.Droid.Resource.Id.caption;
+			global::Xamarin.Controls.Resource.Id.clear_label = global::CheckinMVVM.Droid.Resource.Id.clear_label;
+			global::Xamarin.Controls.Resource.Id.signature_canvas = global::CheckinMVVM.Droid.Resource.Id.signature_canvas;
+			global::Xamarin.Controls.Resource.Id.signature_line = global::CheckinMVVM.Droid.Resource.Id.signature_line;
+			global::Xamarin.Controls.Resource.Id.signature_prompt = global::CheckinMVVM.Droid.Resource.Id.signature_prompt;
+			global::Xamarin.Controls.Resource.Layout.signature_pad_layout = global::CheckinMVVM.Droid.Resource.Layout.signature_pad_layout;
+			global::Xamarin.Controls.Resource.String.signature_pad_caption_text = global::CheckinMVVM.Droid.Resource.String.signature_pad_caption_text;
+			global::Xamarin.Controls.Resource.String.signature_pad_clear_label_text = global::CheckinMVVM.Droid.Resource.String.signature_pad_clear_label_text;
+			global::Xamarin.Controls.Resource.String.signature_pad_prompt_text = global::CheckinMVVM.Droid.Resource.String.signature_pad_prompt_text;
+			global::Xamarin.Controls.Resource.Styleable.SignaturePadView = global::CheckinMVVM.Droid.Resource.Styleable.SignaturePadView;
+			global::Xamarin.Controls.Resource.Styleable.SignaturePadView_captionText = global::CheckinMVVM.Droid.Resource.Styleable.SignaturePadView_captionText;
+			global::Xamarin.Controls.Resource.Styleable.SignaturePadView_captionTextColor = global::CheckinMVVM.Droid.Resource.Styleable.SignaturePadView_captionTextColor;
+			global::Xamarin.Controls.Resource.Styleable.SignaturePadView_captionTextSize = global::CheckinMVVM.Droid.Resource.Styleable.SignaturePadView_captionTextSize;
+			global::Xamarin.Controls.Resource.Styleable.SignaturePadView_clearLabelText = global::CheckinMVVM.Droid.Resource.Styleable.SignaturePadView_clearLabelText;
+			global::Xamarin.Controls.Resource.Styleable.SignaturePadView_clearLabelTextColor = global::CheckinMVVM.Droid.Resource.Styleable.SignaturePadView_clearLabelTextColor;
+			global::Xamarin.Controls.Resource.Styleable.SignaturePadView_clearLabelTextSize = global::CheckinMVVM.Droid.Resource.Styleable.SignaturePadView_clearLabelTextSize;
+			global::Xamarin.Controls.Resource.Styleable.SignaturePadView_signatureLineColor = global::CheckinMVVM.Droid.Resource.Styleable.SignaturePadView_signatureLineColor;
+			global::Xamarin.Controls.Resource.Styleable.SignaturePadView_signatureLineSpacing = global::CheckinMVVM.Droid.Resource.Styleable.SignaturePadView_signatureLineSpacing;
+			global::Xamarin.Controls.Resource.Styleable.SignaturePadView_signatureLineWidth = global::CheckinMVVM.Droid.Resource.Styleable.SignaturePadView_signatureLineWidth;
+			global::Xamarin.Controls.Resource.Styleable.SignaturePadView_signaturePromptText = global::CheckinMVVM.Droid.Resource.Styleable.SignaturePadView_signaturePromptText;
+			global::Xamarin.Controls.Resource.Styleable.SignaturePadView_signaturePromptTextColor = global::CheckinMVVM.Droid.Resource.Styleable.SignaturePadView_signaturePromptTextColor;
+			global::Xamarin.Controls.Resource.Styleable.SignaturePadView_signaturePromptTextSize = global::CheckinMVVM.Droid.Resource.Styleable.SignaturePadView_signaturePromptTextSize;
+			global::Xamarin.Controls.Resource.Styleable.SignaturePadView_strokeColor = global::CheckinMVVM.Droid.Resource.Styleable.SignaturePadView_strokeColor;
+			global::Xamarin.Controls.Resource.Styleable.SignaturePadView_strokeWidth = global::CheckinMVVM.Droid.Resource.Styleable.SignaturePadView_strokeWidth;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.actionBarSize = global::CheckinMVVM.Droid.Resource.Attribute.actionBarSize;
 		}
 		
@@ -334,6 +380,15 @@ namespace CheckinMVVM.Droid
 			// aapt resource value: 0x7f0100ce
 			public const int buttonTintMode = 2130772174;
 			
+			// aapt resource value: 0x7f010178
+			public const int captionText = 2130772344;
+			
+			// aapt resource value: 0x7f01017a
+			public const int captionTextColor = 2130772346;
+			
+			// aapt resource value: 0x7f010179
+			public const int captionTextSize = 2130772345;
+			
 			// aapt resource value: 0x7f010017
 			public const int cardBackgroundColor = 2130771991;
 			
@@ -357,6 +412,15 @@ namespace CheckinMVVM.Droid
 			
 			// aapt resource value: 0x7f0100be
 			public const int checkedTextViewStyle = 2130772158;
+			
+			// aapt resource value: 0x7f01017e
+			public const int clearLabelText = 2130772350;
+			
+			// aapt resource value: 0x7f010180
+			public const int clearLabelTextColor = 2130772352;
+			
+			// aapt resource value: 0x7f01017f
+			public const int clearLabelTextSize = 2130772351;
 			
 			// aapt resource value: 0x7f0100ee
 			public const int closeIcon = 2130772206;
@@ -940,6 +1004,24 @@ namespace CheckinMVVM.Droid
 			// aapt resource value: 0x7f010048
 			public const int showTitle = 2130772040;
 			
+			// aapt resource value: 0x7f010175
+			public const int signatureLineColor = 2130772341;
+			
+			// aapt resource value: 0x7f010177
+			public const int signatureLineSpacing = 2130772343;
+			
+			// aapt resource value: 0x7f010176
+			public const int signatureLineWidth = 2130772342;
+			
+			// aapt resource value: 0x7f01017b
+			public const int signaturePromptText = 2130772347;
+			
+			// aapt resource value: 0x7f01017d
+			public const int signaturePromptTextColor = 2130772349;
+			
+			// aapt resource value: 0x7f01017c
+			public const int signaturePromptTextSize = 2130772348;
+			
 			// aapt resource value: 0x7f010046
 			public const int singleChoiceItemLayout = 2130772038;
 			
@@ -978,6 +1060,12 @@ namespace CheckinMVVM.Droid
 			
 			// aapt resource value: 0x7f010128
 			public const int statusBarScrim = 2130772264;
+			
+			// aapt resource value: 0x7f010173
+			public const int strokeColor = 2130772339;
+			
+			// aapt resource value: 0x7f010174
+			public const int strokeWidth = 2130772340;
 			
 			// aapt resource value: 0x7f0100e5
 			public const int subMenuArrow = 2130772197;
@@ -1263,44 +1351,44 @@ namespace CheckinMVVM.Droid
 		public partial class Color
 		{
 			
-			// aapt resource value: 0x7f0d004f
-			public const int abc_background_cache_hint_selector_material_dark = 2131558479;
-			
-			// aapt resource value: 0x7f0d0050
-			public const int abc_background_cache_hint_selector_material_light = 2131558480;
-			
 			// aapt resource value: 0x7f0d0051
-			public const int abc_btn_colored_borderless_text_material = 2131558481;
+			public const int abc_background_cache_hint_selector_material_dark = 2131558481;
 			
 			// aapt resource value: 0x7f0d0052
-			public const int abc_btn_colored_text_material = 2131558482;
+			public const int abc_background_cache_hint_selector_material_light = 2131558482;
 			
 			// aapt resource value: 0x7f0d0053
-			public const int abc_color_highlight_material = 2131558483;
+			public const int abc_btn_colored_borderless_text_material = 2131558483;
 			
 			// aapt resource value: 0x7f0d0054
-			public const int abc_hint_foreground_material_dark = 2131558484;
+			public const int abc_btn_colored_text_material = 2131558484;
 			
 			// aapt resource value: 0x7f0d0055
-			public const int abc_hint_foreground_material_light = 2131558485;
+			public const int abc_color_highlight_material = 2131558485;
+			
+			// aapt resource value: 0x7f0d0056
+			public const int abc_hint_foreground_material_dark = 2131558486;
+			
+			// aapt resource value: 0x7f0d0057
+			public const int abc_hint_foreground_material_light = 2131558487;
 			
 			// aapt resource value: 0x7f0d0004
 			public const int abc_input_method_navigation_guard = 2131558404;
 			
-			// aapt resource value: 0x7f0d0056
-			public const int abc_primary_text_disable_only_material_dark = 2131558486;
-			
-			// aapt resource value: 0x7f0d0057
-			public const int abc_primary_text_disable_only_material_light = 2131558487;
-			
 			// aapt resource value: 0x7f0d0058
-			public const int abc_primary_text_material_dark = 2131558488;
+			public const int abc_primary_text_disable_only_material_dark = 2131558488;
 			
 			// aapt resource value: 0x7f0d0059
-			public const int abc_primary_text_material_light = 2131558489;
+			public const int abc_primary_text_disable_only_material_light = 2131558489;
 			
 			// aapt resource value: 0x7f0d005a
-			public const int abc_search_url_text = 2131558490;
+			public const int abc_primary_text_material_dark = 2131558490;
+			
+			// aapt resource value: 0x7f0d005b
+			public const int abc_primary_text_material_light = 2131558491;
+			
+			// aapt resource value: 0x7f0d005c
+			public const int abc_search_url_text = 2131558492;
 			
 			// aapt resource value: 0x7f0d0005
 			public const int abc_search_url_text_normal = 2131558405;
@@ -1311,29 +1399,29 @@ namespace CheckinMVVM.Droid
 			// aapt resource value: 0x7f0d0007
 			public const int abc_search_url_text_selected = 2131558407;
 			
-			// aapt resource value: 0x7f0d005b
-			public const int abc_secondary_text_material_dark = 2131558491;
-			
-			// aapt resource value: 0x7f0d005c
-			public const int abc_secondary_text_material_light = 2131558492;
-			
 			// aapt resource value: 0x7f0d005d
-			public const int abc_tint_btn_checkable = 2131558493;
+			public const int abc_secondary_text_material_dark = 2131558493;
 			
 			// aapt resource value: 0x7f0d005e
-			public const int abc_tint_default = 2131558494;
+			public const int abc_secondary_text_material_light = 2131558494;
 			
 			// aapt resource value: 0x7f0d005f
-			public const int abc_tint_edittext = 2131558495;
+			public const int abc_tint_btn_checkable = 2131558495;
 			
 			// aapt resource value: 0x7f0d0060
-			public const int abc_tint_seek_thumb = 2131558496;
+			public const int abc_tint_default = 2131558496;
 			
 			// aapt resource value: 0x7f0d0061
-			public const int abc_tint_spinner = 2131558497;
+			public const int abc_tint_edittext = 2131558497;
 			
 			// aapt resource value: 0x7f0d0062
-			public const int abc_tint_switch_track = 2131558498;
+			public const int abc_tint_seek_thumb = 2131558498;
+			
+			// aapt resource value: 0x7f0d0063
+			public const int abc_tint_spinner = 2131558499;
+			
+			// aapt resource value: 0x7f0d0064
+			public const int abc_tint_switch_track = 2131558500;
 			
 			// aapt resource value: 0x7f0d0008
 			public const int accent_material_dark = 2131558408;
@@ -1389,20 +1477,20 @@ namespace CheckinMVVM.Droid
 			// aapt resource value: 0x7f0d0003
 			public const int cardview_shadow_start_color = 2131558403;
 			
+			// aapt resource value: 0x7f0d0050
+			public const int colorAccent = 2131558480;
+			
 			// aapt resource value: 0x7f0d004e
-			public const int colorAccent = 2131558478;
+			public const int colorPrimary = 2131558478;
 			
-			// aapt resource value: 0x7f0d004c
-			public const int colorPrimary = 2131558476;
-			
-			// aapt resource value: 0x7f0d004d
-			public const int colorPrimaryDark = 2131558477;
+			// aapt resource value: 0x7f0d004f
+			public const int colorPrimaryDark = 2131558479;
 			
 			// aapt resource value: 0x7f0d0040
 			public const int design_bottom_navigation_shadow_color = 2131558464;
 			
-			// aapt resource value: 0x7f0d0063
-			public const int design_error = 2131558499;
+			// aapt resource value: 0x7f0d0065
+			public const int design_error = 2131558501;
 			
 			// aapt resource value: 0x7f0d0041
 			public const int design_fab_shadow_end_color = 2131558465;
@@ -1428,8 +1516,8 @@ namespace CheckinMVVM.Droid
 			// aapt resource value: 0x7f0d0048
 			public const int design_snackbar_background_color = 2131558472;
 			
-			// aapt resource value: 0x7f0d0064
-			public const int design_tint_password_toggle = 2131558500;
+			// aapt resource value: 0x7f0d0066
+			public const int design_tint_password_toggle = 2131558502;
 			
 			// aapt resource value: 0x7f0d0016
 			public const int dim_foreground_disabled_material_dark = 2131558422;
@@ -1458,8 +1546,8 @@ namespace CheckinMVVM.Droid
 			// aapt resource value: 0x7f0d001e
 			public const int highlighted_text_material_light = 2131558430;
 			
-			// aapt resource value: 0x7f0d004b
-			public const int launcher_background = 2131558475;
+			// aapt resource value: 0x7f0d004d
+			public const int launcher_background = 2131558477;
 			
 			// aapt resource value: 0x7f0d001f
 			public const int material_blue_grey_800 = 2131558431;
@@ -1548,17 +1636,23 @@ namespace CheckinMVVM.Droid
 			// aapt resource value: 0x7f0d0038
 			public const int secondary_text_disabled_material_light = 2131558456;
 			
+			// aapt resource value: 0x7f0d004c
+			public const int signature_pad_dark_color = 2131558476;
+			
+			// aapt resource value: 0x7f0d004b
+			public const int signature_pad_light_color = 2131558475;
+			
 			// aapt resource value: 0x7f0d0039
 			public const int switch_thumb_disabled_material_dark = 2131558457;
 			
 			// aapt resource value: 0x7f0d003a
 			public const int switch_thumb_disabled_material_light = 2131558458;
 			
-			// aapt resource value: 0x7f0d0065
-			public const int switch_thumb_material_dark = 2131558501;
+			// aapt resource value: 0x7f0d0067
+			public const int switch_thumb_material_dark = 2131558503;
 			
-			// aapt resource value: 0x7f0d0066
-			public const int switch_thumb_material_light = 2131558502;
+			// aapt resource value: 0x7f0d0068
+			public const int switch_thumb_material_light = 2131558504;
 			
 			// aapt resource value: 0x7f0d003b
 			public const int switch_thumb_normal_material_dark = 2131558459;
@@ -2053,6 +2147,18 @@ namespace CheckinMVVM.Droid
 			// aapt resource value: 0x7f0800a3
 			public const int notification_top_pad_large_text = 2131230883;
 			
+			// aapt resource value: 0x7f0800a7
+			public const int signature_pad_font_size = 2131230887;
+			
+			// aapt resource value: 0x7f0800a6
+			public const int signature_pad_line_thickness = 2131230886;
+			
+			// aapt resource value: 0x7f0800a5
+			public const int signature_pad_narrow_spacing = 2131230885;
+			
+			// aapt resource value: 0x7f0800a4
+			public const int signature_pad_wide_spacing = 2131230884;
+			
 			// aapt resource value: 0x7f080062
 			public const int tooltip_corner_radius = 2131230818;
 			
@@ -2342,26 +2448,26 @@ namespace CheckinMVVM.Droid
 			// aapt resource value: 0x7f020053
 			public const int avd_hide_password = 2130837587;
 			
-			// aapt resource value: 0x7f020130
-			public const int avd_hide_password_1 = 2130837808;
-			
 			// aapt resource value: 0x7f020131
-			public const int avd_hide_password_2 = 2130837809;
+			public const int avd_hide_password_1 = 2130837809;
 			
 			// aapt resource value: 0x7f020132
-			public const int avd_hide_password_3 = 2130837810;
+			public const int avd_hide_password_2 = 2130837810;
+			
+			// aapt resource value: 0x7f020133
+			public const int avd_hide_password_3 = 2130837811;
 			
 			// aapt resource value: 0x7f020054
 			public const int avd_show_password = 2130837588;
 			
-			// aapt resource value: 0x7f020133
-			public const int avd_show_password_1 = 2130837811;
-			
 			// aapt resource value: 0x7f020134
-			public const int avd_show_password_2 = 2130837812;
+			public const int avd_show_password_1 = 2130837812;
 			
 			// aapt resource value: 0x7f020135
-			public const int avd_show_password_3 = 2130837813;
+			public const int avd_show_password_2 = 2130837813;
+			
+			// aapt resource value: 0x7f020136
+			public const int avd_show_password_3 = 2130837814;
 			
 			// aapt resource value: 0x7f020055
 			public const int design_bottom_navigation_item_background = 2130837589;
@@ -2999,11 +3105,11 @@ namespace CheckinMVVM.Droid
 			// aapt resource value: 0x7f020128
 			public const int notification_icon_background = 2130837800;
 			
-			// aapt resource value: 0x7f02012e
-			public const int notification_template_icon_bg = 2130837806;
-			
 			// aapt resource value: 0x7f02012f
-			public const int notification_template_icon_low_bg = 2130837807;
+			public const int notification_template_icon_bg = 2130837807;
+			
+			// aapt resource value: 0x7f020130
+			public const int notification_template_icon_low_bg = 2130837808;
 			
 			// aapt resource value: 0x7f020129
 			public const int notification_tile_bg = 2130837801;
@@ -3012,13 +3118,16 @@ namespace CheckinMVVM.Droid
 			public const int notify_panel_notification_icon_bg = 2130837802;
 			
 			// aapt resource value: 0x7f02012b
-			public const int tooltip_frame_dark = 2130837803;
+			public const int signature_pad_background = 2130837803;
 			
 			// aapt resource value: 0x7f02012c
-			public const int tooltip_frame_light = 2130837804;
+			public const int tooltip_frame_dark = 2130837804;
 			
 			// aapt resource value: 0x7f02012d
-			public const int xamarin_logo = 2130837805;
+			public const int tooltip_frame_light = 2130837805;
+			
+			// aapt resource value: 0x7f02012e
+			public const int xamarin_logo = 2130837806;
 			
 			static Drawable()
 			{
@@ -3129,6 +3238,9 @@ namespace CheckinMVVM.Droid
 			// aapt resource value: 0x7f090044
 			public const int auto = 2131296324;
 			
+			// aapt resource value: 0x7f0900c6
+			public const int background_image = 2131296454;
+			
 			// aapt resource value: 0x7f09002f
 			public const int beginning = 2131296303;
 			
@@ -3144,6 +3256,9 @@ namespace CheckinMVVM.Droid
 			// aapt resource value: 0x7f0900b7
 			public const int cancel_action = 2131296439;
 			
+			// aapt resource value: 0x7f0900c8
+			public const int caption = 2131296456;
+			
 			// aapt resource value: 0x7f090045
 			public const int center = 2131296325;
 			
@@ -3158,6 +3273,9 @@ namespace CheckinMVVM.Droid
 			
 			// aapt resource value: 0x7f0900bf
 			public const int chronometer = 2131296447;
+			
+			// aapt resource value: 0x7f0900cb
+			public const int clear_label = 2131296459;
 			
 			// aapt resource value: 0x7f09004e
 			public const int clip_horizontal = 2131296334;
@@ -3294,14 +3412,14 @@ namespace CheckinMVVM.Droid
 			// aapt resource value: 0x7f090061
 			public const int list_item = 2131296353;
 			
-			// aapt resource value: 0x7f0900ca
-			public const int masked = 2131296458;
+			// aapt resource value: 0x7f0900d0
+			public const int masked = 2131296464;
 			
 			// aapt resource value: 0x7f0900b9
 			public const int media_actions = 2131296441;
 			
-			// aapt resource value: 0x7f0900c8
-			public const int message = 2131296456;
+			// aapt resource value: 0x7f0900ce
+			public const int message = 2131296462;
 			
 			// aapt resource value: 0x7f090031
 			public const int middle = 2131296305;
@@ -3510,8 +3628,17 @@ namespace CheckinMVVM.Droid
 			// aapt resource value: 0x7f090025
 			public const int showTitle = 2131296293;
 			
-			// aapt resource value: 0x7f0900c6
-			public const int sliding_tabs = 2131296454;
+			// aapt resource value: 0x7f0900c7
+			public const int signature_canvas = 2131296455;
+			
+			// aapt resource value: 0x7f0900c9
+			public const int signature_line = 2131296457;
+			
+			// aapt resource value: 0x7f0900ca
+			public const int signature_prompt = 2131296458;
+			
+			// aapt resource value: 0x7f0900cc
+			public const int sliding_tabs = 2131296460;
 			
 			// aapt resource value: 0x7f09008b
 			public const int smallLabel = 2131296395;
@@ -3591,8 +3718,8 @@ namespace CheckinMVVM.Droid
 			// aapt resource value: 0x7f09006f
 			public const int title_template = 2131296367;
 			
-			// aapt resource value: 0x7f0900c7
-			public const int toolbar = 2131296455;
+			// aapt resource value: 0x7f0900cd
+			public const int toolbar = 2131296461;
 			
 			// aapt resource value: 0x7f09003e
 			public const int top = 2131296318;
@@ -3630,8 +3757,8 @@ namespace CheckinMVVM.Droid
 			// aapt resource value: 0x7f090016
 			public const int view_offset_helper = 2131296278;
 			
-			// aapt resource value: 0x7f0900c9
-			public const int visible = 2131296457;
+			// aapt resource value: 0x7f0900cf
+			public const int visible = 2131296463;
 			
 			// aapt resource value: 0x7f0900ab
 			public const int volume_item_container = 2131296427;
@@ -3919,16 +4046,19 @@ namespace CheckinMVVM.Droid
 			public const int select_dialog_singlechoice_material = 2130968639;
 			
 			// aapt resource value: 0x7f040040
-			public const int support_simple_spinner_dropdown_item = 2130968640;
+			public const int signature_pad_layout = 2130968640;
 			
 			// aapt resource value: 0x7f040041
-			public const int Tabbar = 2130968641;
+			public const int support_simple_spinner_dropdown_item = 2130968641;
 			
 			// aapt resource value: 0x7f040042
-			public const int Toolbar = 2130968642;
+			public const int Tabbar = 2130968642;
 			
 			// aapt resource value: 0x7f040043
-			public const int tooltip = 2130968643;
+			public const int Toolbar = 2130968643;
+			
+			// aapt resource value: 0x7f040044
+			public const int tooltip = 2130968644;
 			
 			static Layout()
 			{
@@ -4141,6 +4271,15 @@ namespace CheckinMVVM.Droid
 			
 			// aapt resource value: 0x7f0a0026
 			public const int search_menu_title = 2131361830;
+			
+			// aapt resource value: 0x7f0a003e
+			public const int signature_pad_caption_text = 2131361854;
+			
+			// aapt resource value: 0x7f0a003c
+			public const int signature_pad_clear_label_text = 2131361852;
+			
+			// aapt resource value: 0x7f0a003d
+			public const int signature_pad_prompt_text = 2131361853;
 			
 			// aapt resource value: 0x7f0a003b
 			public const int status_bar_notification_info_overflow = 2131361851;
@@ -7030,6 +7169,64 @@ namespace CheckinMVVM.Droid
 			
 			// aapt resource value: 12
 			public const int SearchView_voiceIcon = 12;
+			
+			public static int[] SignaturePadView = new int[] {
+					2130772339,
+					2130772340,
+					2130772341,
+					2130772342,
+					2130772343,
+					2130772344,
+					2130772345,
+					2130772346,
+					2130772347,
+					2130772348,
+					2130772349,
+					2130772350,
+					2130772351,
+					2130772352};
+			
+			// aapt resource value: 5
+			public const int SignaturePadView_captionText = 5;
+			
+			// aapt resource value: 7
+			public const int SignaturePadView_captionTextColor = 7;
+			
+			// aapt resource value: 6
+			public const int SignaturePadView_captionTextSize = 6;
+			
+			// aapt resource value: 11
+			public const int SignaturePadView_clearLabelText = 11;
+			
+			// aapt resource value: 13
+			public const int SignaturePadView_clearLabelTextColor = 13;
+			
+			// aapt resource value: 12
+			public const int SignaturePadView_clearLabelTextSize = 12;
+			
+			// aapt resource value: 2
+			public const int SignaturePadView_signatureLineColor = 2;
+			
+			// aapt resource value: 4
+			public const int SignaturePadView_signatureLineSpacing = 4;
+			
+			// aapt resource value: 3
+			public const int SignaturePadView_signatureLineWidth = 3;
+			
+			// aapt resource value: 8
+			public const int SignaturePadView_signaturePromptText = 8;
+			
+			// aapt resource value: 10
+			public const int SignaturePadView_signaturePromptTextColor = 10;
+			
+			// aapt resource value: 9
+			public const int SignaturePadView_signaturePromptTextSize = 9;
+			
+			// aapt resource value: 0
+			public const int SignaturePadView_strokeColor = 0;
+			
+			// aapt resource value: 1
+			public const int SignaturePadView_strokeWidth = 1;
 			
 			public static int[] SnackbarLayout = new int[] {
 					16843039,

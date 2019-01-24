@@ -6,6 +6,7 @@ using System.Globalization;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using CheckinMVVM.Globals;
 using CheckinMVVM.Helpers;
 using CheckinMVVM.Models;
 using CheckinMVVM.Services;
@@ -124,6 +125,11 @@ namespace CheckinMVVM.ViewModels
                 //}
 
                 MessagingCenter.Send(this, "SelectedReservation", SelectedReservation);
+
+                if (Constants.SignaturesList!=null)
+                {
+                    Constants.SignaturesList.Clear();
+                }
 
             }
         }

@@ -13,7 +13,7 @@ namespace CheckinMVVM.Views
         {
             InitializeComponent();
 
-            _registrationCardViewModel = new RegistrationCardViewModel();
+            _registrationCardViewModel = new RegistrationCardViewModel(Navigation);
             BindingContext = _registrationCardViewModel;
         }
 

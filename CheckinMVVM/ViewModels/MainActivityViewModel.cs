@@ -20,6 +20,8 @@ namespace CheckinMVVM.ViewModels
         public ICommand PageOnLoadCommand { get; }
         public ICommand LoadRoomListCommand { get; }
         public ICommand GuestViewCommand { get; }
+        public ICommand RemarksViewCommand { get; }
+        public ICommand ProformaViewCommand { get; }
         public ICommand RegistrationCardViewCommand { get; }
 
         private ReservationsHeaderModel _reservationsHeaderModel;
@@ -180,6 +182,21 @@ namespace CheckinMVVM.ViewModels
             }
         }
 
+        private string _badgeProformaIcon = string.Empty;
+        public string BadgeProformaIcon
+        {
+            get
+            {
+                return _badgeProformaIcon;
+            }
+
+            set
+            {
+                _badgeProformaIcon = value;
+                OnPropertyChanged("BadgeProformaIcon");
+            }
+        }
+
         public MainActivityViewModel(ReservationsHeaderModel reservationsHeader,INavigation navigation)
         {
             ReservationsHeader = reservationsHeader;
@@ -190,7 +207,19 @@ namespace CheckinMVVM.ViewModels
             PageOnLoadCommand = new Command(async () => await PageOnLoad());
             LoadRoomListCommand = new Command(async () => await LoadRoomListPage());
             GuestViewCommand = new Command(async () => await LoadGuestView());
+            RemarksViewCommand = new Command(async () => await LoadRemarksView());
+            ProformaViewCommand = new Command(async () => await LoadProformaView());
             RegistrationCardViewCommand = new Command(async () => await LoadRegistrtaionCardView());
+        }
+
+        private async Task LoadRemarksView()
+        {
+            await this.NavigationStack.PushAsync(new RemarksView());
+        }
+
+        private async Task LoadProformaView()
+        {
+            //
         }
 
         private async Task LoadRegistrtaionCardView()

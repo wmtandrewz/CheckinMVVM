@@ -64,6 +64,7 @@
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
                     <flex:FlexButton Grid.Row="0" Grid.Column="0" ClickedCommand="{Binding LoadRoomListCommand}" WidthRequest="100" HeightRequest="100" CornerRadius="50" BorderColor="White" BorderThickness="2" HasShadow="true" HorizontalOptions="Center" VerticalOptions="Start"
                         Icon="Icons/ReservationIcons/roomNumber.png" Margin="10" ForegroundColor="#ffffff" HighlightForegroundColor="#49516F" BackgroundColor="#3c5ec4" HighlightBackgroundColor="#8EA4D2" />
@@ -75,15 +76,20 @@
                     <Label Grid.Row="1" Grid.Column="1" Text="Guest Profiles" TextColor="Gray" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
                     <Image Grid.Row="0" Grid.Column="1" Source="{Binding BadgeGuestIcon}" Margin="0,0,30,10" WidthRequest="40" HeightRequest="40" HorizontalOptions="EndAndExpand" VerticalOptions="EndAndExpand"/>
                     
-                    <flex:FlexButton Grid.Row="0" Grid.Column="2" WidthRequest="100" HeightRequest="100" CornerRadius="50" BorderColor="White" BorderThickness="2" HasShadow="true" HorizontalOptions="Center" VerticalOptions="End"
+                    <flex:FlexButton Grid.Row="0" Grid.Column="2" ClickedCommand="{Binding RemarksViewCommand}" WidthRequest="100" HeightRequest="100" CornerRadius="50" BorderColor="White" BorderThickness="2" HasShadow="true" HorizontalOptions="Center" VerticalOptions="End"
                         Icon="Icons/ReservationIcons/remarks.png" Margin="10" ForegroundColor="#ffffff" HighlightForegroundColor="#49516F" BackgroundColor="#3c5ec4" HighlightBackgroundColor="#8EA4D2" />
                     <Label Grid.Row="1" Grid.Column="2" Text="Remarks" TextColor="Gray" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
                     <Image Grid.Row="0" Grid.Column="2" Source="{Binding BadgeRemarksIcon}" Margin="0,0,30,10" WidthRequest="40" HeightRequest="40" HorizontalOptions="EndAndExpand" VerticalOptions="EndAndExpand"/>
                     
-                    <flex:FlexButton Grid.Row="0" Grid.Column="3" ClickedCommand="{Binding RegistrationCardViewCommand}" WidthRequest="100" HeightRequest="100" CornerRadius="50" BorderColor="White" BorderThickness="2" HasShadow="true" HorizontalOptions="Center" VerticalOptions="End"
+                    <flex:FlexButton Grid.Row="0" Grid.Column="3" ClickedCommand="{Binding ProformaViewCommand}" WidthRequest="100" HeightRequest="100" CornerRadius="50" BorderColor="White" BorderThickness="2" HasShadow="true" HorizontalOptions="Center" VerticalOptions="End"
+                        Icon="Icons/ReservationIcons/bill.png" Margin="10" ForegroundColor="#ffffff" HighlightForegroundColor="#49516F" BackgroundColor="#3c5ec4" HighlightBackgroundColor="#8EA4D2" />
+                    <Label Grid.Row="1" Grid.Column="3" Text="Invoice" TextColor="Gray" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+                    <Image Grid.Row="0" Grid.Column="3" Source="{Binding BadgeProformaIcon}" Margin="0,0,30,10" WidthRequest="40" HeightRequest="40" HorizontalOptions="EndAndExpand" VerticalOptions="EndAndExpand"/>
+                    
+                    <flex:FlexButton Grid.Row="0" Grid.Column="4" ClickedCommand="{Binding RegistrationCardViewCommand}" WidthRequest="100" HeightRequest="100" CornerRadius="50" BorderColor="White" BorderThickness="2" HasShadow="true" HorizontalOptions="Center" VerticalOptions="End"
                         Icon="Icons/ReservationIcons/checkin.png" Margin="10" ForegroundColor="#ffffff" HighlightForegroundColor="#49516F" BackgroundColor="#3c5ec4" HighlightBackgroundColor="#8EA4D2" />
-                    <Label Grid.Row="1" Grid.Column="3" Text="Check-in" TextColor="Gray" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
-                    <Image Grid.Row="0" Grid.Column="3" Source="{Binding BadgeCheckinIcon}" Margin="0,0,30,10" WidthRequest="40" HeightRequest="40" HorizontalOptions="EndAndExpand" VerticalOptions="EndAndExpand"/>
+                    <Label Grid.Row="1" Grid.Column="4" Text="Check-in" TextColor="Gray" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+                    <Image Grid.Row="0" Grid.Column="4" Source="{Binding BadgeCheckinIcon}" Margin="0,0,30,10" WidthRequest="40" HeightRequest="40" HorizontalOptions="EndAndExpand" VerticalOptions="EndAndExpand"/>
                 </Grid>
             </StackLayout>
         </StackLayout>

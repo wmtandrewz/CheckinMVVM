@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:controls="clr-namespace:SignaturePad.Forms;assembly=SignaturePad.Forms" xmlns:customBehaviors="using:CheckinMVVM.Behaviors;assembly=EventToCommandBehavior" x:Class="CheckinMVVM.Views.SignaturePadView">
+    <ContentPage.Content>
+            <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Orientation="Vertical">
+                <StackLayout BackgroundColor="#211261" Padding="10,10,10,10" Orientation="Vertical" VerticalOptions="Start">
+                    <Label Text="{Binding SelectedSignature.GuestName}" FontAttributes="Bold" FontSize="32" TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" />
+                    <Label Text="Signature | Terms &amp; Conditions" FontSize="20" TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" />
+                </StackLayout>
+                <StackLayout BackgroundColor="#F1F0FF" Padding="20" >
+                    <Grid Padding="50,10,10,10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30">
+                            </RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="40">
+                            </ColumnDefinition>
+                            <ColumnDefinition Width="*">
+                            </ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Image Grid.Row="0" Grid.Column="0" Source="Icons/signature.png" IsVisible="true" HeightRequest="30" WidthRequest="40" VerticalOptions="Center" HorizontalOptions="StartAndExpand" />
+                        <Label Grid.Row="0" Grid.Column="1" Text="Signature" FontAttributes="Bold" FontSize="Large" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="Center" />
+                    </Grid>
+                </StackLayout>
+                <StackLayout Padding="20,10,10,20">
+                    <Label FontSize="Medium" Text=" I confirm that, I have read and understood the " VerticalTextAlignment="Center" HorizontalTextAlignment="Start" HorizontalOptions="FillAndExpand" />
+                    <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="#eff5ff">
+                        <Grid.RowDefinitions Padding="0,10,10,0">
+                            <RowDefinition Height="*">
+                            </RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="60" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="10" />
+                            <ColumnDefinition Width="100" />
+                            <ColumnDefinition Width="80" />
+                        </Grid.ColumnDefinitions>
+                        <Button Grid.Row="0" Grid.Column="0" Text="Agreement" BackgroundColor="Transparent" TextColor="Green" FontSize="Medium" />
+                        <Label Grid.Row="0" Grid.Column="1" FontSize="Medium" Text=" and " VerticalTextAlignment="Center" HorizontalTextAlignment="Center" />
+                        <Button Grid.Row="0" Grid.Column="2" Text="Terms and Conditions" BackgroundColor="Transparent" TextColor="Green" FontSize="Medium" />
+                        <BoxView Grid.Row="0" Grid.Column="3" Color="White" WidthRequest="4" HeightRequest="35" HorizontalOptions="Center" VerticalOptions="Center" />
+                        <Label Grid.Row="0" Grid.Column="4" Text="I Agree" HorizontalOptions="End" TextColor="Black" VerticalOptions="Center" FontSize="Medium" />
+                        <Switch Grid.Row="0" Grid.Column="5" x:Name="agreementSwitch" VerticalOptions="Center" HorizontalOptions="End" IsToggled="{Binding IsAgreementToggled}"/>
+                    </Grid>
+                </StackLayout>
+                <StackLayout IsVisible="{Binding IsAgreementToggled}" Padding="20" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                    <StackLayout Orientation="Horizontal">
+                        <Button Text="Save" BackgroundColor="Green" TextColor="White" WidthRequest="100" HorizontalOptions="Start" Command="{Binding SaveButtonPressedCommand}" CommandParameter="{x:Reference SignaturePad}">
+                            <Button.BorderRadius>
+                                <OnPlatform x:TypeArguments="x:Int32" iOS="20" Android="50" />
+                            </Button.BorderRadius>
+                        </Button>
+                        <Label Text="Dear Guest ! Please add your signature below." HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontAttributes="Italic" FontSize="Medium" HorizontalOptions="CenterAndExpand" />
+                        <Button Text="Close" BackgroundColor="Red" TextColor="White" WidthRequest="100" HorizontalOptions="End" >
+                            <Button.BorderRadius>
+                                <OnPlatform x:TypeArguments="x:Int32" iOS="20" Android="50" />
+                            </Button.BorderRadius>
+                        </Button>
+                    </StackLayout>
+                    <controls:SignaturePadView x:Name="SignaturePad" StrokeWidth="3" StrokeColor="White" BackgroundColor="#6D2276" HeightRequest="250" ClearFontSize="20" ClearTextColor="Yellow" CaptionFontSize="14" CaptionTextColor="Silver" CaptionText="Sign here." />
+                </StackLayout>
+            </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

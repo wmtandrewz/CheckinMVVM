@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CheckinMVVM.Views.RegistrationCardView">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:customBehaviors="using:CheckinMVVM.Behaviors;assembly=EventToCommandBehavior" x:Class="CheckinMVVM.Views.RegistrationCardView">
     <ContentPage.Content>
         <ScrollView>
             <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
                 <StackLayout BackgroundColor="#211261" Padding="10,10,10,10" Orientation="Vertical" VerticalOptions="Start">
-                    <Label Text="Reservation ID" FontAttributes="Bold" FontSize="32" TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" />
-                    <Label Text="Guest Profiles" FontSize="20" TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" />
+                    <Label Text="{Binding ReservationDetails.ReservationId}" FontAttributes="Bold" FontSize="32" TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" />
+                    <Label Text="{Binding ReservationDetails.ClientName}" FontSize="20" TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" />
                 </StackLayout>
                 <StackLayout Padding="10,10,10,10">
                     <StackLayout BackgroundColor="#F1F0FF">
@@ -208,8 +208,62 @@
                                 </ColumnDefinition>
                             </Grid.ColumnDefinitions>
                             <Image Grid.Row="0" Grid.Column="0" Source="Icons/signature.png" IsVisible="true" HeightRequest="40" WidthRequest="40" VerticalOptions="Center" HorizontalOptions="StartAndExpand" />
-                            <Label Grid.Row="0" Grid.Column="1" Text="Sign and Check-in" FontAttributes="Bold" FontSize="Medium" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="Center" />
+                            <Label Grid.Row="0" Grid.Column="1" Text="Sign and Check-in" FontAttributes="Bold" FontSize="Large" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="Center" />
                         </Grid>
+                    </StackLayout>
+                    <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HeightRequest="{Binding SignatureListLength,Mode=TwoWay}">
+                        <ListView x:Name="signatureListView" ItemsSource="{Binding SignatureList}" SelectedItem="{Binding SelectedSignature,Mode=TwoWay}" RowHeight="200" SeparatorVisibility="Default" SeparatorColor="#008FBE" BackgroundColor="Transparent" CachingStrategy="RetainElement">
+                            <ListView.Header>
+                                <StackLayout Padding="10,5,0,5" BackgroundColor="#211261">
+                                    <Label Text="Guest Signatures" HorizontalOptions="Center" TextColor="White" FontSize="Medium" FontAttributes="Bold"/>
+                                </StackLayout>
+                            </ListView.Header>
+                            
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <StackLayout Padding="10,10,10,0" BackgroundColor="{Binding CellColor}">
+                                            <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                                                <Grid.RowDefinitions Padding="0,10,10,0">
+                                                    <RowDefinition Height="1*">
+                                                    </RowDefinition>
+                                                    <RowDefinition Height="2*">
+                                                    </RowDefinition>
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="2*">
+                                                    </ColumnDefinition>
+                                                </Grid.ColumnDefinitions>
+                                                <Label Grid.Row="0" Grid.Column="0" Text="{Binding GuestName}" Font="Bold" FontSize="Medium" TextColor="{Binding GuestNameColor}">
+                                                </Label>
+                                                <Image Grid.Row="1" Grid.Column="0" Source="{Binding GuestSignatureImage,Mode=TwoWay}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                                                </Image>
+                                            </Grid>
+                                        </StackLayout>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                            <ListView.Behaviors>
+                                <customBehaviors:EventToCommandBehavior EventName="ItemSelected" Command="{Binding SignatureTappedCommand}"/>
+                            </ListView.Behaviors>
+                        </ListView>
+                    </StackLayout>
+                    
+                    <StackLayout Padding="10">
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                            <Button Margin="10" Text="Check-In" BackgroundColor="Green" TextColor="White" WidthRequest="250" HorizontalOptions="Center" VerticalOptions="Center">
+                                <Button.BorderRadius> 
+                                    <OnPlatform x:TypeArguments="x:Int32" iOS="20" Android="20" />
+                                </Button.BorderRadius>
+                            </Button>
+                            
+                            <Button Margin="10" Text="Save Signatures" BackgroundColor="#211261" TextColor="White" WidthRequest="250" HorizontalOptions="Center" VerticalOptions="Center">
+                                <Button.BorderRadius> 
+                                    <OnPlatform x:TypeArguments="x:Int32" iOS="20" Android="20" />
+                                </Button.BorderRadius>
+                            </Button>
+                            
+                        </StackLayout>
                     </StackLayout>
                 </StackLayout>
             </StackLayout>

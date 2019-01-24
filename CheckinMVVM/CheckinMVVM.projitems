@@ -50,6 +50,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\SignaturePadView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\RemarksView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
@@ -111,6 +119,16 @@
       <DependentUpon>RegistrationCardView.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\RegistrationCardViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\SignaturePadView.xaml.cs">
+      <DependentUpon>SignaturePadView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\SignaturePadViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\GuestCheckinModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\GuestSignatureModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\RemarksView.xaml.cs">
+      <DependentUpon>RemarksView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\RemarksViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Models\" />
