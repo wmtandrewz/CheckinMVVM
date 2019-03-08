@@ -197,6 +197,21 @@ namespace CheckinMVVM.ViewModels
             }
         }
 
+        private string _badgeRemarksIcon = string.Empty;
+        public string BadgeRemarksIcon
+        {
+            get
+            {
+                return _badgeRemarksIcon;
+            }
+
+            set
+            {
+                _badgeRemarksIcon = value;
+                OnPropertyChanged("BadgeRemarksIcon");
+            }
+        }
+
         public MainActivityViewModel(ReservationsHeaderModel reservationsHeader,INavigation navigation)
         {
             ReservationsHeader = reservationsHeader;
@@ -210,6 +225,7 @@ namespace CheckinMVVM.ViewModels
             RemarksViewCommand = new Command(async () => await LoadRemarksView());
             ProformaViewCommand = new Command(async () => await LoadProformaView());
             RegistrationCardViewCommand = new Command(async () => await LoadRegistrtaionCardView());
+
         }
 
         private async Task LoadRemarksView()
@@ -275,6 +291,8 @@ namespace CheckinMVVM.ViewModels
                         reservationDetails.RoomStatus = !string.IsNullOrEmpty(roomStatusModel.RoomStatus) ? roomStatusModel.RoomStatus : "Not Assigned";
                         reservationDetails.RoomNumber = reservationDetails.RoomNumber.All(Char.IsDigit) && !string.IsNullOrEmpty(reservationDetails.RoomNumber) ? reservationDetails.RoomNumber : "Not Assigned";
                     }
+
+                    BadgeRemarksIcon = $"Numbers/badge{Constants.SelectedNoticesRemarksSet.RemarksList.Count}.png";
 
                     ReservationDetails = reservationDetails;
                     IsRunningIndicator = false;

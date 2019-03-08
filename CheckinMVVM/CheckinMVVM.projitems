@@ -58,6 +58,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\EditRemarkView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
@@ -129,6 +133,16 @@
       <DependentUpon>RemarksView.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\RemarksViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\RemarksModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\NoticesModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\NoticesRemarksModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\EditRemarkView.xaml.cs">
+      <DependentUpon>EditRemarkView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\EditRemarksViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\PostAPIservice.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Payloads\GuestPayloadModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Payloads\RoomPayloadModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Models\" />
@@ -137,5 +151,6 @@
     <Folder Include="$(MSBuildThisFileDirectory)Globals\" />
     <Folder Include="$(MSBuildThisFileDirectory)Helpers\" />
     <Folder Include="$(MSBuildThisFileDirectory)Behaviors\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Models\Payloads\" />
   </ItemGroup>
 </Project>

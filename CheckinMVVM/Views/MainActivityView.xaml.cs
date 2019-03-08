@@ -26,7 +26,7 @@ namespace CheckinMVVM.Views
             if (!IsLoaded)
             {
                 mainActivityViewModel.PageOnLoadCommand.Execute(null);
-                IsLoaded = true;
+                //IsLoaded = true;
             }
         }
     }

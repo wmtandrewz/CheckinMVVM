@@ -9,6 +9,7 @@ using System.Windows.Input;
 using CheckinMVVM.Globals;
 using CheckinMVVM.Helpers;
 using CheckinMVVM.Models;
+using CheckinMVVM.Models.Payloads;
 using CheckinMVVM.Services;
 using Newtonsoft.Json;
 using Xamarin.Forms;
@@ -19,6 +20,7 @@ namespace CheckinMVVM.ViewModels
     {
         public INavigation NavigationStack { get; private set; }
         public ICommand PageOnLoadCommand { get; }
+        public ICommand RoomSelectedCommand { get; }
 
         private ObservableCollection<RoomListModel> _roomList;
         public ObservableCollection<RoomListModel> RoomingList
@@ -62,10 +64,58 @@ namespace CheckinMVVM.ViewModels
             }
         }
 
+        private RoomListModel _selectedRoom = null;
+        public RoomListModel SelectedRoom
+        {
+            get
+            {
+                return _selectedRoom;
+            }
+            set
+            {
+                _selectedRoom = value;
+                OnPropertyChanged("SelectedRoom");
+            }
+        }
+
         public RoomListViewModel(INavigation navigation)
         {
             this.NavigationStack = navigation;
             PageOnLoadCommand = new Command(async () => await PageOnLoad());
+            RoomSelectedCommand = new Command(async () => await RoomSelected());
+        }
+
+        private async Task RoomSelected()
+        {
+            IsListVisible = false;
+            IsIndicatorVisible = true;
+
+            RoomPayloadModel roomPayload = new RoomPayloadModel()
+            {
+                HotelCode = Settings.HotelCode,
+                ReservationID = Constants.SelectedReservationHeader.ReservationID,
+                RoomNumber = SelectedRoom.RoomNumber
+            };
+
+            var responce = await PostAPIservice.AssignRoom(roomPayload);
+
+            if(responce == "success")
+            {
+                Constants.SelectedReservationHeader.RoomNumber = roomPayload.RoomNumber;
+                Constants.SelectedReservationHeader.RoomIndicatorImgPath = SelectedRoom.RoomStatus == "CLEAN" ? "Icons/CleanRoom.png" : SelectedRoom.RoomStatus == "INSPECTED" ? "Icons/InspectedRoom.png" : "Icons/DirtyRoom.png";
+
+                Constants.SelectedReservationDetailSet.RoomNumber = roomPayload.RoomNumber;
+                Constants.SelectedReservationDetailSet.RoomStatus = SelectedRoom.RoomStatus;
+                Constants.SelectedReservationDetailSet.RoomStatusColor = SelectedRoom.RoomStatus == "CLEAN" ? "Green" : SelectedRoom.RoomStatus == "INSPECTED" ? "Orange" : "Red";
+
+                MessagingCenter.Send<RoomListViewModel>(this, "RoomDetailsChanged");
+
+                await Application.Current.MainPage.DisplayAlert("Success!", "Room has been assigned successfully.", "OK");
+                await NavigationStack.PopAsync();
+            }
+
+            IsListVisible = true;
+            IsIndicatorVisible = false;
         }
 
         private async Task PageOnLoad()

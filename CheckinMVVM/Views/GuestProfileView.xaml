@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:customBehaviors="using:CheckinMVVM.Behaviors;assembly=EventToCommandBehavior" x:Class="CheckinMVVM.Views.GuestProfileView">
     <ContentPage.Content>
-        <StackLayout>
+        <StackLayout VerticalOptions="FillAndExpand">
             <StackLayout BackgroundColor="#211261" Padding="10,10,10,10" Orientation="Vertical" VerticalOptions="Start">
                 <Label Text="Guest Profile" FontAttributes="Bold" FontSize="32" TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" />
                 <Label Text="{Binding GuestNumberText}" FontSize="20" TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" />
             </StackLayout>
-            <ScrollView>
-                <ActivityIndicator IsVisible="{Binding IsVisibleIndicator}" IsRunning="{Binding IsRunningIndicator}" Color="#660099" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" />
+            <ActivityIndicator IsVisible="{Binding IsVisibleIndicator}" IsRunning="{Binding IsRunningIndicator}" Color="#660099" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" />
+            <ScrollView IsVisible="{Binding IsVisiblePage}">
                 <StackLayout IsVisible="{Binding IsVisiblePage}">
                     <StackLayout Padding="10,0,10,10">
                         <Label FontAttributes="Bold" FontSize="Medium" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Text="Identification Method :" />
@@ -17,7 +17,7 @@
                             </Picker.Behaviors>
                         </Picker>
                         <Label FontAttributes="Bold" FontSize="Medium" TextColor="Black" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Text="Identification Number :" />
-                        <SearchBar Placeholder="Search Identification ID" Text="{Binding SearchBarText}" FontSize="Medium" SearchCommand="{Binding GuestSearchCommand}" HorizontalTextAlignment="Start">
+                        <SearchBar Placeholder="Search Identification ID" Text="{Binding SearchBarText,Mode=TwoWay}" FontSize="Medium" SearchCommand="{Binding GuestSearchCommand}" HorizontalTextAlignment="Start">
                             <SearchBar.PlaceholderColor>
                                 <OnPlatform x:TypeArguments="Color" Android="Black" iOS="#373737">
                                 </OnPlatform>
@@ -87,7 +87,7 @@
                             <Picker Title="Select" BackgroundColor="#E6E6FA" TextColor="Black">
                             </Picker>
                             <StackLayout BackgroundColor="Transparent">
-                                <Button Text="Save" BackgroundColor="#008FBE" x:Name="buttonSave" TextColor="White">
+                                <Button Text="Save" BackgroundColor="#008FBE" Command="{Binding SaveGuestProfileCommand}" TextColor="White">
                                     <Button.BorderRadius>
                                         <OnPlatform x:TypeArguments="x:Int32" iOS="20" Android="50" />
                                     </Button.BorderRadius>

@@ -14,6 +14,8 @@ namespace CheckinMVVM.Globals
         public static ReservationDetailsModel SelectedReservationDetailSet { get; set; }
         public static GuestDetailsModel SelectedGuestProfile { get; set; }
         public static GuestSignatureModel SelectedGuestSignature { get; set; }
+        public static NoticesRemarksModel SelectedNoticesRemarksSet { get; set; }
+        public static RemarksModel SelectedRemark { get; set; }
         public static List<GuestSignatureModel> SignaturesList = new List<GuestSignatureModel>();
 
         public static List<IDMethodModel> IdentificationMethods = new List<IDMethodModel> { 

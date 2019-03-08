@@ -22,7 +22,8 @@ namespace CheckinMVVM.Helpers
         #region Setting Constants
 
         private const string BaseUriKey = "Base_Uri";
-        private static readonly string BaseUriDefault = "https://checkinserviceapi.azurewebsites.net/api/";
+        //private static readonly string BaseUriDefault = "https://checkinserviceapi.azurewebsites.net/api/";
+        private static readonly string BaseUriDefault = "https://chml.keells.lk/checkinserviceapi/api/";
 
         private const string GatewayUriKey = "Gateway_Uri";
         private static readonly string GatewayUriDefault = "https://nwgateway.keells.lk:44300";

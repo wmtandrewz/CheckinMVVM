@@ -219,8 +219,40 @@ namespace CheckinMVVM.Services
                     {
                         using (HttpContent responceContent = apiResult.Content)
                         {
-                            string roomList = await responceContent.ReadAsStringAsync();
-                            return roomList;
+                            string guestDetails = await responceContent.ReadAsStringAsync();
+                            return guestDetails;
+                        }
+                    }
+                    else
+                    {
+                        return await apiResult.Content.ReadAsStringAsync();
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                return e.Message;
+            }
+        }
+
+        public static async Task<string> GetReservationRemarksNotices(string hotelCode, string reservationId)
+        {
+            try
+            {
+                using (HttpClient apiClient = new HttpClient())
+                {
+                    apiClient.BaseAddress = new Uri(Settings.BaseUri);
+                    apiClient.DefaultRequestHeaders.Add("AuthToken", Constants.AccessToken);
+                    apiClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                    var apiResult = await apiClient.GetAsync($"retrive/GetReservationRemarksAndNotices?hotelCode={hotelCode}&reservationId={reservationId}");
+
+                    if (apiResult.IsSuccessStatusCode)
+                    {
+                        using (HttpContent responceContent = apiResult.Content)
+                        {
+                            string noticesRemarks = await responceContent.ReadAsStringAsync();
+                            return noticesRemarks;
                         }
                     }
                     else

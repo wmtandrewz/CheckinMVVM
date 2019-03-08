@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CheckinMVVM.Views.RoomListView">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:customBehaviors="using:CheckinMVVM.Behaviors;assembly=EventToCommandBehavior" x:Class="CheckinMVVM.Views.RoomListView">
     <ContentPage.Content>
         <StackLayout Padding="15,15,15,15" BackgroundColor="Transparent">
             <ActivityIndicator IsVisible="{Binding IsIndicatorVisible}" IsRunning="{Binding IsIndicatorVisible}" Color="#660099" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" />
             <StackLayout Padding="20,20,20,20" x:Name="RoomDetails">
-                <ListView ItemsSource="{Binding RoomingList}" IsVisible="{Binding IsListVisible}" RowHeight="80" SeparatorColor="#660099" SeparatorVisibility="Default" CachingStrategy="RetainElement">
+                <ListView ItemsSource="{Binding RoomingList}" SelectedItem="{Binding SelectedRoom,Mode=TwoWay}" IsVisible="{Binding IsListVisible}" RowHeight="80" SeparatorColor="#660099" SeparatorVisibility="Default" CachingStrategy="RetainElement">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
@@ -26,6 +26,9 @@
                             </ViewCell>
                         </DataTemplate>
                     </ListView.ItemTemplate>
+                    <ListView.Behaviors>
+                        <customBehaviors:EventToCommandBehavior EventName="ItemSelected" Command="{Binding RoomSelectedCommand}" />
+                    </ListView.Behaviors>
                 </ListView>
             </StackLayout>
         </StackLayout>

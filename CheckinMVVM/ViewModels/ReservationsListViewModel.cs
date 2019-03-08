@@ -107,23 +107,23 @@ namespace CheckinMVVM.ViewModels
             ReservationsListOnLoadCommand = new Command(async () => await PageOnLOad());
             LoadReservationsListCommand = new Command(async() => await LoadReservationsList());
             ReservationListItemSelectedCommand = new Command(ReservationListItemSelected);
+
+            MessagingCenter.Subscribe<RoomListViewModel>(this, "RoomDetailsChanged", (sender) =>
+            {
+                UpdateReservationsList();
+            });
+
         }
 
         private void ReservationListItemSelected()
         {
             if(SelectedReservation !=null )
             {
-                //var responce = await GetAPIservice.GetReservationDetails(Settings.HotelCode, SelectedReservation.ReservationID);
 
-                //if(!string.IsNullOrEmpty(responce))
-                //{
-                //    ReservationDetailsModel reservationDetails = JsonConvert.DeserializeObject<ReservationDetailsModel>(responce);
-                //    if(reservationDetails != null)
-                //    {
-                //        MessagingCenter.Send(this, "SetDetailPage", reservationDetails);
-                //    }
-                //}
+                //Get Notices And Remarks
+                GetReservationNoticesAndRemarks();
 
+                //Send selected
                 MessagingCenter.Send(this, "SelectedReservation", SelectedReservation);
 
                 if (Constants.SignaturesList!=null)
@@ -131,6 +131,18 @@ namespace CheckinMVVM.ViewModels
                     Constants.SignaturesList.Clear();
                 }
 
+            }
+        }
+
+        private async void GetReservationNoticesAndRemarks()
+        {
+            var responce = await GetAPIservice.GetReservationRemarksNotices(Settings.HotelCode,SelectedReservation.ReservationID);
+            if(!string.IsNullOrEmpty(responce))
+            {
+                NoticesRemarksModel noticesRemarks = JsonConvert.DeserializeObject<NoticesRemarksModel>(responce);
+                if (noticesRemarks != null) {
+                    Constants.SelectedNoticesRemarksSet = noticesRemarks;
+                }
             }
         }
 
@@ -173,6 +185,41 @@ namespace CheckinMVVM.ViewModels
                 });
             }
             catch(Exception)
+            {
+                IsListVisible = false;
+                IsIndicatorVisible = false;
+            }
+
+        }
+
+        private void UpdateReservationsList()
+        {
+            IsIndicatorVisible = true;
+            IsListVisible = false;
+
+            try
+            {
+
+                var tempList = ReservationsList;
+
+                foreach (var item in tempList)
+                {
+                    if(item.ReservationID == Constants.SelectedReservationHeader.ReservationID)
+                    {
+                        item.RoomNumber = Constants.SelectedReservationHeader.RoomNumber;
+                        item.Status = Constants.SelectedReservationHeader.Status;
+                        item.RoomIndicatorImgPath = Constants.SelectedReservationHeader.RoomIndicatorImgPath;
+                    }
+                }
+
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    ReservationsList = new ObservableCollection<ReservationsHeaderModel>(tempList);
+                    IsListVisible = true;
+                    IsIndicatorVisible = false;
+                });
+            }
+            catch (Exception)
             {
                 IsListVisible = false;
                 IsIndicatorVisible = false;

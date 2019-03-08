@@ -1,16 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CheckinMVVM.Views.RemarksView">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CheckinMVVM.Views.RemarksView" xmlns:customBehaviors="using:CheckinMVVM.Behaviors;assembly=EventToCommandBehavior" xmlns:flex="clr-namespace:Flex.Controls;assembly=Flex">
     <ContentPage.Content>
-        <ScrollView>
-            <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
-                <StackLayout BackgroundColor="#211261" Padding="10,10,10,10" Orientation="Vertical" VerticalOptions="Start">
-                    <Label Text="{Binding ReservationDetails.ReservationId}" FontAttributes="Bold" FontSize="32" TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" />
-                    <Label Text="{Binding ReservationDetails.ClientName}" FontSize="20" TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" />
-                </StackLayout>
-                <StackLayout Padding="10,10,10,10">
-                    
-                </StackLayout>
+        <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+            <StackLayout BackgroundColor="#211261" Padding="10,10,10,10" Orientation="Vertical" VerticalOptions="Start">
+                <Label Text="{Binding ReservationDetails.ReservationId}" FontAttributes="Bold" FontSize="32" TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" />
+                <Label Text="{Binding ReservationDetails.ClientName}" FontSize="20" TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" />
             </StackLayout>
-        </ScrollView>
+            <ActivityIndicator IsVisible="{Binding IsVisibleIndicator,Mode=TwoWay}" IsRunning="{Binding IsRunningIndicator,Mode=TwoWay}" Color="#660099" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" />
+            <StackLayout Padding="10,10,10,10" VerticalOptions="StartAndExpand" IsVisible="{Binding IsVisiblePage,Mode=TwoWay}">
+                <ListView ItemsSource="{Binding RemarksListSource,Mode=TwoWay}" SelectedItem="{Binding SelectedRemark,Mode=TwoWay}" VerticalOptions="FillAndExpand" HorizontalOptions="CenterAndExpand" RowHeight="150" CachingStrategy="RetainElement" SeparatorVisibility="Default" SeparatorColor="Navy">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Padding="10" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="25"/>
+                                            <RowDefinition Height="125"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Label Grid.Row="0" Grid.Column="0" Text="{Binding RemarkCategory}" TextColor="#211261" FontSize="18" FontAttributes="Bold" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" HorizontalOptions="FillAndExpand" HeightRequest="25"/>
+                                        <Label Grid.Row="1" Grid.Column="0" Text="{Binding RemarkDescription}" BackgroundColor="#e8f0ff" FontSize="Medium" LineBreakMode="WordWrap" HeightRequest="100" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand" Margin="20,0,0,0"/>
+                                    </Grid>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                    <ListView.Behaviors>
+                        <customBehaviors:EventToCommandBehavior EventName="ItemSelected" Command="{Binding RemarkTappedCommand}"/>
+                    </ListView.Behaviors>
+                </ListView>
+            </StackLayout>
+            <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand" IsVisible="{Binding IsVisiblePage,Mode=TwoWay}" MinimumHeightRequest="100" HeightRequest="100" Margin="10,10,50,10">
+                <flex:FlexButton Grid.Row="0" Grid.Column="4" ClickedCommand="{Binding AddNewRemarkCommand}" WidthRequest="76" HeightRequest="76" CornerRadius="38" BorderColor="White" BorderThickness="2" HasShadow="true" HorizontalOptions="EndAndExpand" VerticalOptions="EndAndExpand"
+                        Icon="Icons/new.png" Margin="10" ForegroundColor="#ffffff" HighlightForegroundColor="#49516F" BackgroundColor="#3c5ec4" HighlightBackgroundColor="#8EA4D2" />
+            </StackLayout>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>

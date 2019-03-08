@@ -12,8 +12,15 @@ namespace CheckinMVVM.Views
         public RemarksView()
         {
             InitializeComponent();
-            _remarksViewModel = new RemarksViewModel();
+            _remarksViewModel = new RemarksViewModel(Navigation);
             BindingContext = _remarksViewModel;
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            _remarksViewModel.PageOnLoadCommand.Execute(null);
         }
     }
 }

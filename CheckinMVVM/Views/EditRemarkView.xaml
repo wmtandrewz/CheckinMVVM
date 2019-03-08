@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CheckinMVVM.Views.EditRemarkView" >
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+            <StackLayout BackgroundColor="#211261" Padding="10,10,10,10" Orientation="Vertical" VerticalOptions="Start">
+                <Label Text="{Binding RemarkCategoryText,Mode=TwoWay}" FontAttributes="Bold" FontSize="32" TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" />
+                <Label Text="{Binding Title}" FontSize="20" TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" />
+            </StackLayout>
+            <ActivityIndicator IsVisible="{Binding IsVisibleIndicator,Mode=TwoWay}" IsRunning="{Binding IsRunningIndicator,Mode=TwoWay}" Color="#660099" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" />
+            <StackLayout Padding="10,10,10,10" VerticalOptions="StartAndExpand" IsVisible="{Binding IsVisiblePage,Mode=TwoWay}">
+                <Editor x:Name="editor" Text="{Binding RemarkDescriptionText,Mode=TwoWay}" HorizontalOptions="FillAndExpand" MaxLength="250" VerticalOptions="FillAndExpand" HeightRequest="150" BackgroundColor="#e3d5e5" TextColor="Black" Margin="20,100,20,100"/>
+            </StackLayout>
+            <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" IsVisible="{Binding IsVisiblePage,Mode=TwoWay}" HeightRequest="150">
+                <Button Text="Save" FontSize="18" BackgroundColor="#211261" TextColor="White" WidthRequest="150" HeightRequest="50" Command="{Binding SaveButtonCommand}">
+                    <Button.BorderRadius>
+                        <OnPlatform x:TypeArguments="x:Int32" iOS="20" Android="20" />
+                    </Button.BorderRadius>
+                </Button>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

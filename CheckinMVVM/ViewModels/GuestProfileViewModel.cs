@@ -9,6 +9,7 @@ using System.Windows.Input;
 using CheckinMVVM.Globals;
 using CheckinMVVM.Helpers;
 using CheckinMVVM.Models;
+using CheckinMVVM.Models.Payloads;
 using CheckinMVVM.Services;
 using Microblink.Forms.Core;
 using Microblink.Forms.Core.Overlays;
@@ -26,6 +27,7 @@ namespace CheckinMVVM.ViewModels
         public ICommand PageOnLoadCommand { get; }
         public ICommand GuestSearchCommand { get; }
         public ICommand IDPickerSelectedChangedCommand { get; }
+        public ICommand SaveGuestProfileCommand { get; }
 
         private IMicroblinkScanner blinkID;
         private IMrtdRecognizer mrtdRecognizer;
@@ -263,7 +265,55 @@ namespace CheckinMVVM.ViewModels
             PageOnLoadCommand = new Command(PageOnLoad);
             GuestSearchCommand = new Command(async() => await GuestSearchById());
             IDPickerSelectedChangedCommand = new Command(IDSelectedItemChanged);
+            SaveGuestProfileCommand = new Command(async () => await SaveGuestDetails());
             InitializeBlinkIdScanner();
+        }
+
+        private async Task SaveGuestDetails()
+        {
+            GuestPayloadModel guestPayload = new GuestPayloadModel
+            {
+                HotelCode = Settings.HotelCode,
+                ReservationId = Constants.SelectedReservationHeader.ReservationID,
+                GuestNumber = Constants.SelectedGuestProfile.GuestNumber.ToString(),
+                IdDocumentType = SelectedIDMethod.Code,
+                IdPassportNumber = SearchBarText,
+                Title = SelectedSalutation.Code,
+                FirstName = GuestProfile.GuestFirstName,
+                LastName = GuestProfile.GuestLastName,
+                City = GuestProfile.City,
+                HouseNumber = GuestProfile.HouseNumber,
+                Country = GuestProfile.CountryKey,
+                DateOfBirth = FormatDate(GuestProfile.DateOfBirth),
+                Email = GuestProfile.Email,
+                Gender = SelectedGender.Code,
+                Language = "E",
+                MobileNo = GuestProfile.ContactNumber,
+                Nationality = "UK",
+                PassportExpiryDate = FormatDate(GuestProfile.DateOfIdExpiry),
+                Street = GuestProfile.Street
+            };
+
+            var responce = await PostAPIservice.CreateUpdateGuest(guestPayload);
+        }
+
+        private string FormatDate(string date)
+        {
+            try
+            {
+                if (!string.IsNullOrEmpty(date))
+                {
+                    return DateTime.Parse(date).ToString("yyyy-MM-dd");
+                }
+                else
+                {
+                    return DateTime.Now.ToString("yyyy-MM-dd");
+                }
+            }
+            catch(Exception)
+            {
+                return DateTime.Now.ToString("yyyy-MM-dd");
+            }
         }
 
         private void IDSelectedItemChanged()
@@ -312,6 +362,8 @@ namespace CheckinMVVM.ViewModels
                 }
 
                 IsVisiblePage = true;
+                IsVisibleIndicator = false;
+                IsRunningIndicator = false;
             }
         }
 
@@ -321,7 +373,7 @@ namespace CheckinMVVM.ViewModels
             SelectedIDMethod = new ObservableCollection<IDMethodModel>(Constants.IdentificationMethods).FirstOrDefault(x => x.Code == guest.IdentificationMethod);
 
             //Set ID
-            SearchBarText = Constants.SelectedGuestProfile.PassportIdNumber;
+            SearchBarText = guest.PassportIdNumber;
 
             //Set Gender
             SelectedGender = new ObservableCollection<GenderModel>(Constants.Genders).FirstOrDefault(x => x.Gender == guest.Gender);
